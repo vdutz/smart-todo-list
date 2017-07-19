@@ -5,10 +5,11 @@
     <title>Smart Todo List - Home Page</title>
 
     <!-- External CSS -->
+    <link rel="stylesheet" href="vendor/normalize-4.1.1.css" type="text/css" />
 
     <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
+    <link rel="stylesheet" href="styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="styles/nav.css" type="text/css" />
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
@@ -24,20 +25,24 @@
 
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
-      <img class="logo" src="/images/logo.png">
-      <span class="header">Tweeter</span>
-      <span class="compose">
-        <i class="fa fa-pencil-square" aria-hidden="true"></i>
-        Compose
-      </span>
-      <span class="register">
-        <i class="fa fa-rebel" aria-hidden="true"></i>
-        Join
-      </span>
+      <img class="logo" src="images/todolist.png">
+      <span class="header">SmarToDo</span>
+      <span class="nav-button nav-list">
+        <i class="fa fa-list-ol" aria-hidden="true"></i>
+        My List
+        </span>
+      <span class="nav-button nav-search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        Search
+        </span>
+      <span class="nav-button nav-login">
+        <i class="fa fa-sign-in" aria-hidden="true"></i>
+        Login
+        </span>
     </nav>
 
     <!-- Page-specific (main) content here -->
-    <main class="container">
+<!--     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form class="tweetbox">
@@ -66,7 +71,7 @@
         </article>
 
       </section>
-    </main>
+    </main> -->
 
   </body>
 </html>
