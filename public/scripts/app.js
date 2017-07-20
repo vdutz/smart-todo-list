@@ -94,5 +94,14 @@ $(document).ready(function() {
   $(".nav-login").on('click', function(event){
     renderLogin();
   });
+
+  $("body").on('click', '.switch-to-login', function(event){
+    renderLogin();
+  });
+
+  $("body").on('click', '.switch-to-register', function(event){
+    renderRegister();
+  });
+
 })
 
