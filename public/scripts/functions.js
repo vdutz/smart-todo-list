@@ -63,19 +63,19 @@ function renderLogin() {
 }
 
 /////replace the whole container and append with a form to test adding data
-function renderForm() {
+function renderAddItemForm() {
   var $formPage = `<main class='container'>
                       <div class="row">
                         <div class="col-md-8 col-md-offset-2 col-xs-12">
                           <div class="login-box">
                             <img src="images/todolist.png"">
-                            <form class="login-form">
+                            <form class="add-item-form">
                               <input type="text" name="name" placeholder="Name" /><br><br>
                               <input type="text" name="category" placeholder="Category" /><br><br>
                               <input type="text" name="rating" placeholder="Rating" /><br><br>
                               <input type="text" name="description" placeholder="Description" /><br><br>
                               <input type="text" name="picture" placeholder="Picture" /><br><br>
-                              <input type="submit" name="submit" class="submit" value="Add Item" />
+                              <input type="submit" class="add-item-submit" value="Add Item" />
                             </form><br>
                           </div>
                         </div>
@@ -85,14 +85,27 @@ function renderForm() {
 }
 
 function loadList(){
-    $.ajax({
-      url: '/api/items',
-      method: 'GET',
-      success: function(itemsObject) {
-        $(".container .row").empty();
-        renderItems(itemsObject);
-      }
-    })
-  }
+  $.ajax({
+    url: '/api/items',
+    method: 'GET',
+    success: function(itemsObject) {
+      $(".container .row").empty();
+      renderItems(itemsObject);
+    }
+  })
+}
+
+function addItem(item){
+  $.ajax({
+    url: '/api/items',
+    method: 'POST',
+    data: item.serialize(),
+    success: function(itemsObject) {
+      // $(".container .row").empty();
+      // renderItems(itemsObject);
+      console.log("POST succesful.")
+    }
+  })
+}
 
 

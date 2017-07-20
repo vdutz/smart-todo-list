@@ -107,7 +107,16 @@ $(document).ready(function() {
 
 ////click search to test adding data to our database
   $(".nav-search").on('click', function(event){
-    renderForm();
+    renderAddItemForm();
   });
+
+  // $(".add-item-form").load(function() {
+  $("body").on('submit', ".add-item-form", function(event){
+    event.preventDefault();
+    // data = $(".add-item-form")
+    console.log($(this))
+    addItem($(this))
+  });
+  // })
 })
 
