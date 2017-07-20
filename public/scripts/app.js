@@ -65,29 +65,34 @@ const initial_items = [
   }
 ]
 
-function createItemElement(itemdata) {
-  const { name, category, rating, description, picture } = itemdata;
+// function createItemElement(itemdata) {
+//   const { name, category, rating, description, picture } = itemdata;
 
-  itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4">
-                  <div class="box-inner">
-                    <h4>${name}</h4>
-                    Type: ${category}<br>
-                    Rating: ${rating}<br><br>
-                    <img src="${picture}"><br><br>
-                    <p>${description}</p>
-                  </div>
-                </div>`
+//   itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4">
+//                   <div class="box-inner">
+//                     <h4>${name}</h4>
+//                     Type: ${category}<br>
+//                     Rating: ${rating}<br><br>
+//                     <img src="${picture}"><br><br>
+//                     <p>${description}</p>
+//                   </div>
+//                 </div>`
 
-  $item = $(itemString)
-  return $item
-}
+//   $item = $(itemString)
+//   return $item
+// }
 
-function renderItems(items) {
-  items.forEach(function(item){
-    createItemElement(item).appendTo($(".container .row"));
-  })
-}
+// function renderItems(items) {
+//   items.forEach(function(item){
+//     createItemElement(item).appendTo($(".container .row"));
+//   })
+// }
 
 $(document).ready(function() {
-  renderItems(initial_items)
+  renderItems(initial_items);
+
+  $(".nav-login").on('click', function(event){
+    renderLogin();
+  });
 })
+
