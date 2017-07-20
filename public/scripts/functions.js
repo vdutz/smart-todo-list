@@ -42,19 +42,21 @@ function renderRegister() {
 
 /////// replace the whole container and append with login page
 function renderLogin() {
-  var $loginPage = `<div class="row">
+  var $loginPage = `<main class='container'>
+                      <div class="row">
                         <div class="col-md-4 col-md-offset-4 col-xs-12">
                           <div class="login-box">
                             <img src="images/todolist.png"">
                             <form class="login-form">
                               <input type="email" name="email" placeholder="Email" /><br><br>
                               <input type="password" name="password" placeholder="Password" /><br><br>
-                              <input type="submit" name="submit" class="submit" value="Login" />
+                              <input type="submit" name="submit" class="submit" value="Log In" />
                             </form><br>
                             <a class='switch-to-register'>Need an account?</a>
                           </div>
                         </div>
-                      </div>`;
-  $('.container').empty().prepend($loginPage);
+                      </div>
+                    </main>`;
+  $('body').empty().prepend($loginPage);
 }
 
