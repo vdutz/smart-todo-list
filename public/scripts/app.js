@@ -105,5 +105,9 @@ $(document).ready(function() {
     renderRegister();
   });
 
+////click search to test adding data to our database
+  $(".nav-search").on('click', function(event){
+    renderForm();
+  });
 })
 

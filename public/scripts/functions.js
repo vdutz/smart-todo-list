@@ -62,6 +62,28 @@ function renderLogin() {
   $('body').empty().append($loginPage);
 }
 
+/////replace the whole container and append with a form to test adding data
+function renderForm() {
+  var $formPage = `<main class='container'>
+                      <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-xs-12">
+                          <div class="login-box">
+                            <img src="images/todolist.png"">
+                            <form class="login-form">
+                              <input type="text" name="name" placeholder="Name" /><br><br>
+                              <input type="text" name="category" placeholder="Category" /><br><br>
+                              <input type="text" name="rating" placeholder="Rating" /><br><br>
+                              <input type="text" name="description" placeholder="Description" /><br><br>
+                              <input type="text" name="picture" placeholder="Picture" /><br><br>
+                              <input type="submit" name="submit" class="submit" value="Add Item" />
+                            </form><br>
+                          </div>
+                        </div>
+                      </div>
+                    </main>`;
+  $('body').empty().append($formPage);
+}
+
 function loadList(){
     $.ajax({
       url: '/api/items',
@@ -72,4 +94,5 @@ function loadList(){
       }
     })
   }
+
 
