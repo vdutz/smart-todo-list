@@ -49,7 +49,7 @@ function renderLogin() {
                             <form class="login-form">
                               <input type="email" name="email" placeholder="Email" /><br><br>
                               <input type="password" name="password" placeholder="Password" /><br><br>
-                              <input type="submit" name="submit" class="submit" value="Register" />
+                              <input type="submit" name="submit" class="submit" value="Login" />
                             </form><br>
                             <a class='switch-to-register'>Need an account?</a>
                           </div>

@@ -22,3 +22,7 @@
 .nav-button {
   margin: 10%;
 }
+
+.nav-login {
+  cursor: pointer;
+}
