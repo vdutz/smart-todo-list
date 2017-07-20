@@ -62,3 +62,14 @@ function renderLogin() {
   $('body').empty().append($loginPage);
 }
 
+function loadList(){
+    $.ajax({
+      url: '/api/items',
+      method: 'GET',
+      success: function(itemsObject) {
+        $(".container .row").empty();
+        renderItems(itemsObject);
+      }
+    })
+  }
+

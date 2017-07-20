@@ -89,7 +89,9 @@ const initial_items = [
 // }
 
 $(document).ready(function() {
-  renderItems(initial_items);
+  // renderItems(initial_items);
+
+  loadList();
 
   $(".nav-login").on('click', function(event){
     renderLogin();
