@@ -16,6 +16,7 @@ const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/items.js");
+const searchRoutes = require("./routes/search.js")
 // const usersRoutes2 = require("/routes/login");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -38,6 +39,7 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/items", usersRoutes(knex));
+app.use("/api/search", searchRoutes(knex));
 
 // app.use("/api/login", loginRoutes(knex));
 
