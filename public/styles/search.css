@@ -5,26 +5,31 @@
   text-align: center;
 }
 
+.search-container input{
+  width:75%;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
 .auto-complete {
   width: 75%;
   border-radius: 5px;
-  border: 1px solid black;
   margin:auto;
+  background-color: #c2cbd0;
 }
 
-.search-container input{
-  width:75%;
-}
 
 .search-card {
-  width: 75%;
+  width: 100%;
   height: 100px;
-  margin: 10px;
+  border: 1px solid #FAFBFC;
+  display: inline-block;
 }
 
 .search-card img{
   float:left;
-  width: 60px;
+  height: 100%;
+  width: 100px;
 }
 
 .search-card span{
