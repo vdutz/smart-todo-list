@@ -95,7 +95,7 @@ function loadList(){
   })
 }
 
-function addItem(item){
+function addItem(item) {
   $.ajax({
     url: '/api/items',
     method: 'POST',
@@ -106,6 +106,27 @@ function addItem(item){
       console.log("POST succesful.")
     }
   })
+}
+
+function displayItem(item) {
+  let { name, category, rating, description, picture } = item
+
+  let $bigItem = `<main class='container'>
+                      <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-xs-12">
+                          <div class="display-box">
+                            <img src="${picture}">
+                            <div>
+                              <h2>${name}</h2>
+                              <h4>Category: ${category}</h4>
+                              <h4>Rating: ${rating}</h4>
+                              <h4>Description: ${description}</h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </main>`;
+  $('body').empty().append($bigItem);
 }
 
 

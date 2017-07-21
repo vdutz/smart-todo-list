@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
         category: "product",
         rating: 8.2,
         description: "Set against the backdrop of China's Cultural Revolution, a secret military project sends signals into space to establish contact with aliens",
-        picture: "https://s3-us-west-2.amazonaws.com/tabs.web.media/b/h/bhsx/bhsx-square-1536.jpg"},
+        picture: "https://images-na.ssl-images-amazon.com/images/I/71ni1Uf5wDL._SL1000_.jpg"},
 
         {name: "Swiffer Sweeper Floor Mop Starter Kit, 1 Count",
         category: "product",

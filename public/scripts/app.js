@@ -88,10 +88,19 @@ const initial_items = [
 //   })
 // }
 
+const testItem = {
+    "id": 3,
+    "category": "book",
+    "name": "The Three Body Problem",
+    "rating": 9.2,
+    "description": "Set against the backdrop of China's Cultural Revolution, a secret military project sends signals into space to establish contact with aliens",
+    "picture": "https://s3-us-west-2.amazonaws.com/tabs.web.media/b/h/bhsx/bhsx-square-1536.jpg"
+  }
+
 $(document).ready(function() {
   // renderItems(initial_items);
 
-  loadList();
+  // loadList();
 
   $(".nav-login").on('click', function(event){
     renderLogin();
@@ -105,18 +114,19 @@ $(document).ready(function() {
     renderRegister();
   });
 
-////click search to test adding data to our database
+  //click search to test adding data to our database
   $(".nav-search").on('click', function(event){
     renderAddItemForm();
   });
 
-  // $(".add-item-form").load(function() {
   $("body").on('submit', ".add-item-form", function(event){
     event.preventDefault();
-    // data = $(".add-item-form")
     console.log($(this))
     addItem($(this))
   });
-  // })
+
+  displayItem(testItem)
+  console.log("Test:\n\n", testItem)
+
 })
 

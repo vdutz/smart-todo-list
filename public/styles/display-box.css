@@ -1,0 +1,27 @@
+.display-box {
+  border: 4px solid black;
+  background-color: lightblue;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.display-box img {
+  height: 200px;
+  flex-grow: 1;
+}
+
+.display-box div {
+  flex-grow: 1;
+  padding: 10px;
+  padding-left: 20px;
+}
+
+
+.display-box h2 {
+  /*float: right;*/
+}
+
+.display-box h4 {
+  /*float: right;*/
+}
