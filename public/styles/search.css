@@ -1,0 +1,32 @@
+.search-container {
+  border: 1px;
+  border-radius: 3px;
+  padding: 5px 10px 50px 10px;
+  text-align: center;
+}
+
+.auto-complete {
+  width: 75%;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin:auto;
+}
+
+.search-container input{
+  width:75%;
+}
+
+.search-card {
+  width: 75%;
+  height: 100px;
+  margin: 10px;
+}
+
+.search-card img{
+  float:left;
+  width: 60px;
+}
+
+.search-card span{
+  line-height: 100px;
+}
