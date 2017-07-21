@@ -8,6 +8,7 @@ function createItemElement(itemdata) {
                     Rating: ${rating}<br><br>
                     <img src="${picture}"><br><br>
                     <p>${description}</p>
+                    <button type=button class="remove-item">Remove from List</button>
                   </div>
                 </div>`
 
@@ -108,6 +109,19 @@ function addItem(item) {
   })
 }
 
+function addItemfromButton(item) {
+  $.ajax({
+    url: '/api/items',
+    method: 'POST',
+    data: item,
+    success: function(itemsObject) {
+      // $(".container .row").empty();
+      // renderItems(itemsObject);
+      console.log("POST succesful.")
+    }
+  })
+}
+
 function displayItem(item) {
   let { name, category, rating, description, picture } = item
 
@@ -121,6 +135,7 @@ function displayItem(item) {
                               <h4>Category: ${category}</h4>
                               <h4>Rating: ${rating}</h4>
                               <h4>Description: ${description}</h4>
+                              <button type="button" class="add-item">Add to List</button>
                             </div>
                           </div>
                         </div>

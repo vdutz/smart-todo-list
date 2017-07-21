@@ -89,7 +89,6 @@ const initial_items = [
 // }
 
 const testItem = {
-    "id": 3,
     "category": "book",
     "name": "The Three Body Problem",
     "rating": 9.2,
@@ -125,8 +124,47 @@ $(document).ready(function() {
     addItem($(this))
   });
 
-  displayItem(testItem)
-  console.log("Test:\n\n", testItem)
+  // displayItem(testItem)
+  // console.log("Test:\n\n", testItem)
+
+  $("body").on('click', ".display-box .add-item", function(event){
+    event.preventDefault();
+    let siblings = $(this).siblings()
+    let picture = $(this).parent().siblings()[0].src
+    let name = siblings[0].innerHTML
+    let category = siblings[1].innerHTML.replace("Category: ", "")
+    let rating = siblings[2].innerHTML.replace("Rating: ", "")
+    let description = siblings[3].innerHTML.replace("Description: ", "")
+    let item = {
+      name: name,
+      category: category,
+      rating: rating,
+      description: description,
+      picture: picture
+    }
+    console.log(item)
+    addItemfromButton(item)
+  });
+
+  $("body").on('click', ".remove-item", function(event){
+    event.preventDefault();
+    console.log("Remove button clicked")
+    // let siblings = $(this).siblings()
+    // let picture = $(this).parent().siblings()[0].src
+    // let name = siblings[0].innerHTML
+    // let category = siblings[1].innerHTML.replace("Category: ", "")
+    // let rating = siblings[2].innerHTML.replace("Rating: ", "")
+    // let description = siblings[3].innerHTML.replace("Description: ", "")
+    // let item = {
+    //   name: name,
+    //   category: category,
+    //   rating: rating,
+    //   description: description,
+    //   picture: picture
+    // }
+    // console.log(item)
+    // deleteItem(item)
+  });
 
 })
 
