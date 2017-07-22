@@ -58,10 +58,10 @@ function readBookList(list) {
   }
   $('.auto-complete').empty()
   let $searchCardBar = `
-                       <span> Top 3 items from Google Books</span>
+                       <span> Top 2 items from Google Books</span>
                        `
   $('.auto-complete').append($searchCardBar)
-  for (let i=0; i<3; i++) {
+  for (let i=0; i<2; i++) {
     if (list.items[i].volumeInfo.title.length > 40){
       shortenedName = list.items[i].volumeInfo.title.slice(0,40) + '...'
       if (!list.items[i].volumeInfo.imageLinks) {
@@ -164,10 +164,10 @@ function readMovieList(list){
     return;
   }
   let $searchCardBar = `
-                       <span> Top 3 items from TMDB</span>
+                       <span> Top 2 items from TMDB</span>
                        `
   $('.auto-complete').append($searchCardBar)
-  for (let i=0; i<3; i++) {
+  for (let i=0; i<2; i++) {
     if (!list.results[i].poster_path) {
       imageURL = 'https://www.themoviedb.org/assets/static_cache/23e473036b28a59bd5dcfde9c671b1c5/images/v4/logos/312x276-primary-green.png'
       let $searchCard =  `
@@ -225,10 +225,10 @@ function readPlaceList(list) {
     return;
   }
   let $searchCardBar = `
-                       <span> Top 3 items from Yelp</span>
+                       <span> Top 2 items from Yelp</span>
                        `
   $('.auto-complete').append($searchCardBar)
-  for (let i=0; i<3; i++) {
+  for (let i=0; i<2; i++) {
     if (!list.businesses[i].image_url) {
       let $searchCard =  `
                         <div class='auto-complete-item'>
