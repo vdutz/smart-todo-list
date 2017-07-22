@@ -101,9 +101,14 @@ $(document).ready(function() {
 
   loadList();
 
+  $(".nav-list").on('click', function(event){
+    loadList();
+  });
+
   $(".nav-login").on('click', function(event){
     renderLogin();
   });
+
 
   $("body").on('click', '.switch-to-login', function(event){
     renderLogin();
@@ -113,9 +118,9 @@ $(document).ready(function() {
     renderRegister();
   });
 
-  //click search to test adding data to our database
+  //click search to render search bar
   $(".nav-search").on('click', function(event){
-    renderAddItemForm();
+    renderSearch();
   });
 
   $("body").on('submit', ".add-item-form", function(event){

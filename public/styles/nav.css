@@ -9,6 +9,7 @@
   font-size: 20px;
 }
 
+
 .logo {
   height: 96px;
   margin: 10px;
@@ -20,9 +21,18 @@
 }
 
 .nav-button {
-  margin: 10%;
+  margin:25px 5px;
+  float: right;
 }
 
 .nav-login {
+  cursor: pointer;
+}
+
+.nav-search {
+  cursor: pointer;
+}
+
+.nav-list {
   cursor: pointer;
 }

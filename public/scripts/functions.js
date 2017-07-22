@@ -157,4 +157,16 @@ function displayItem(item) {
   $('body').empty().append($bigItem);
 }
 
+function renderSearch(item) {
+  var $search = `<div class="row">
+                  <div class="col-md-6 col-md-offset-3 col-xs-12">
+                    <div class="search-container">
+                      <input class="search-bar" placeholder="Search your book">
+                      <div class='auto-complete'>
+                      </div>
+                    </div>
+                  </div>
+                </div>`
+  $('.container').empty().append($search);
+}
 
