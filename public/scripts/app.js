@@ -99,7 +99,7 @@ const testItem = {
 $(document).ready(function() {
   // renderItems(initial_items);
 
-  // loadList();
+  loadList();
 
   $(".nav-login").on('click', function(event){
     renderLogin();
@@ -149,21 +149,21 @@ $(document).ready(function() {
   $("body").on('click', ".remove-item", function(event){
     event.preventDefault();
     console.log("Remove button clicked")
-    // let siblings = $(this).siblings()
-    // let picture = $(this).parent().siblings()[0].src
-    // let name = siblings[0].innerHTML
-    // let category = siblings[1].innerHTML.replace("Category: ", "")
-    // let rating = siblings[2].innerHTML.replace("Rating: ", "")
-    // let description = siblings[3].innerHTML.replace("Description: ", "")
-    // let item = {
-    //   name: name,
-    //   category: category,
-    //   rating: rating,
-    //   description: description,
-    //   picture: picture
-    // }
+    let siblings = $(this).siblings()
+    let picture = siblings[3].src
+    let name = siblings[0].innerHTML
+    let category = siblings[1].innerHTML.replace("Category: ", "")
+    let rating = siblings[2].innerHTML.replace("Rating: ", "")
+    let description = siblings[4].innerHTML.replace("Description: ", "")
+    let item = {
+      name: name,
+      category: category,
+      rating: rating,
+      description: description,
+      picture: picture
+    }
     // console.log(item)
-    // deleteItem(item)
+    deleteItem(item)
   });
 
 })

@@ -27,3 +27,7 @@ main {
   height:350px;
   width:350px;
 }
+
+.box-inner .remove-item {
+  background-color: transparent;
+}

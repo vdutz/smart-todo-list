@@ -1,9 +1,10 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('items').del()
+  return Promise.all([
+    knex('items').del()
     .then(function () {
-      // Inserts seed entries
+      // Inserts seed item entries
       return knex('items').insert([
         {name: "Banh Mi Boys",
         category: "restaurant",
@@ -53,5 +54,62 @@ exports.seed = function(knex, Promise) {
         description: "Our dishes are prepared with only the best ingredients, using our specialty recipes",
         picture: "https://s3-media3.fl.yelpcdn.com/bphoto/HxfnLq9Hbe-zPJNxIo4tew/348s.jpg"}
       ]);
-    });
+    }),
+
+    knex('users').del()
+    .then(function () {
+      // Inserts seed user entries
+      return knex('users').insert([
+        {email: "test@test.com",
+        password: "test",
+        nickname: "lil' test"
+        },
+        {email: "example@example.com",
+        password: "example",
+        nickname: "lil' example"
+        },
+        {email: "jane@doe.com",
+        password: "jane",
+        nickname: "Janey"
+        }
+      ])
+    }),
+  ])
+  .then(function() {
+    return knex('users_items').del()
+    .then(function () {
+      // Inserts seed user entries
+      return knex('users_items').insert([
+        {user_id: 1,
+        item_id: 3,
+        complete_status: "todo"
+        },
+        {user_id: 1,
+        item_id: 4,
+        complete_status: "complete"
+        },
+        {user_id: 2,
+        item_id: 2,
+        complete_status: "todo"
+        },
+        {user_id: 2,
+        item_id: 3,
+        complete_status: "todo"
+        },
+        {user_id: 2,
+        item_id: 5,
+        complete_status: "todo"
+        },
+        {user_id: 2,
+        item_id: 3,
+        complete_status: "todo"
+        },
+        {user_id: 3,
+        item_id: 8,
+        complete_status: "todo"
+        }
+      ])
+    })
+  })
+
 };

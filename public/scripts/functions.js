@@ -4,9 +4,9 @@ function createItemElement(itemdata) {
   itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4">
                   <div class="box-inner">
                     <h4>${name}</h4>
-                    Type: ${category}<br>
-                    Rating: ${rating}<br><br>
-                    <img src="${picture}"><br><br>
+                    <p>Type: ${category}</p>
+                    <p>Rating: ${rating}</p>
+                    <img src="${picture}">
                     <p>${description}</p>
                     <button type=button class="remove-item">Remove from List</button>
                   </div>
@@ -113,6 +113,19 @@ function addItemfromButton(item) {
   $.ajax({
     url: '/api/items',
     method: 'POST',
+    data: item,
+    success: function(itemsObject) {
+      // $(".container .row").empty();
+      // renderItems(itemsObject);
+      console.log("POST succesful.")
+    }
+  })
+}
+
+function deleteItem(item) {
+  $.ajax({
+    url: '/api/items',
+    method: 'DELETE',
     data: item,
     success: function(itemsObject) {
       // $(".container .row").empty();
