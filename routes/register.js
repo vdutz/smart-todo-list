@@ -15,14 +15,16 @@ module.exports = (knex) => {
   // });
 
   router.post("/", (req, res) => {
+    console.log("Query Username: ", req.query.username)
+    console.log("Body Username: ", req.body.username)
     knex('users')
       .insert({username: req.body.username, email: req.body.email, password: req.body.password})
       .then((results) => {
         res.json(results);
       })
       .catch((err) => {
-        res.status(404).send(err)
         console.log("Error adding user to database")
+        res.status(404).send(err)
       })
   });
 

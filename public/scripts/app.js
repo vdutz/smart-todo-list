@@ -99,9 +99,9 @@ const testItem = {
 $(document).ready(function() {
   // renderItems(initial_items);
 
-  checkUser();
+  // checkUser();
 
-  loadList();
+  // loadList();
 
   $(".nav-list").on('click', function(event){
     loadList();
@@ -128,7 +128,7 @@ $(document).ready(function() {
     renderSearch();
   });
 
-  $("body").on('submit', '.submit-register', function(event){
+  $("body").on('submit', '.register-form', function(event){
     event.preventDefault();
     console.log($(this))
     userRegister($(this));

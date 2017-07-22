@@ -30,14 +30,14 @@ function renderRegister() {
   var $registerPage = `<main class='container'>
                         <div class="row">
                           <div class="col-md-4 col-md-offset-4 col-xs-12">
-                            <div class="login-box">
+                            <div class="register-box">
                               <h2>Registration</h2>
                               <img src="images/todolist.png""><br><br>
-                              <form class="login-form">
+                              <form class="register-form">
                                 <input type="text" name="username" placeholder="Username" /><br><br>
                                 <input type="email" name="email" placeholder="Email" /><br><br>
                                 <input type="password" name="password" placeholder="Password" /><br><br>
-                                <input type="submit" name="submit" class="submit-register" value="Register" />
+                                <input type="submit" class="submit-register" value="Register" />
                               </form><br>
                               <a class="switch-to-login">Already have an account?</a>
                             </div>
@@ -58,7 +58,7 @@ function renderLogin() {
                             <form class="login-form"><br>
                               <input type="email" name="email" placeholder="Email" /><br><br>
                               <input type="password" name="password" placeholder="Password" /><br><br>
-                              <input type="submit" name="submit" class="submit-login" value="Log In" />
+                              <input type="submit" class="submit-login" value="Log In" />
                             </form><br>
                             <a class="switch-to-register">Need an account?</a>
                           </div>
@@ -155,10 +155,11 @@ function checkUser() {
 }
 
 function userRegister(user) {
+  console.log(user)
   $.ajax({
     url: '/api/register',
     method: 'POST',
-    data: item.serialize(),
+    data: user.serialize(),
     success: function(response) {
       console.log("Registration succesful!")
       console.log(response)

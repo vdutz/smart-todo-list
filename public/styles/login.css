@@ -1,26 +1,26 @@
-.login-box {
+.login-box, .register-box {
   border: 1px;
   border-radius: 3px;
   padding: 5px 10px 50px 10px;
   text-align: center;
 }
 
-.login-box img {
+.login-box img, .register-box img {
   height: 90px;
   margin: 10px 0;
 }
 
-.login-box .switch-to-register{
+.login-box .switch-to-register, .register-box .switch-to-login{
   border: 1px;
   color: white;
   cursor: pointer;
 }
 
-.login-box .switch-to-login{
+/*.login-box .switch-to-login{
   border: 1px;
   color: white;
   cursor: pointer;
-}
+}*/
 
 input[type=email], input[type=password], input[type=text] {
   border-radius: 5px;
