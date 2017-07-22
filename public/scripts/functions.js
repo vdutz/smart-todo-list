@@ -2,13 +2,16 @@ function createItemElement(itemdata) {
   const { name, category, rating, description, picture } = itemdata;
 
   itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4">
-                  <div class="box-inner">
-                    <h4>${name}</h4>
-                    <p>Type: ${category}</p>
-                    <p>Rating: ${rating}</p>
-                    <img src="${picture}">
-                    <p>${description}</p>
-                    <button type=button class="remove-item">Remove from List</button>
+                  <div class="box-inner" style="background:url(${picture}) no-repeat; background-size: cover;)">
+                    <span>
+                    <div class="item-element-detail">
+                      <h4>${name}</h4>
+                      <p>Type: ${category}</p>
+                      <p>Rating: ${rating}</p>
+                      <p>${description}</p>
+                      <button type=button class="remove-item">Remove from List</button>
+                    </div>
+                    </span>
                   </div>
                 </div>`
 
@@ -135,31 +138,31 @@ function deleteItem(item) {
   })
 }
 
-function displayItem(item) {
-  let { name, category, rating, description, picture } = item
+// function displayItem(item) {
+//   let { name, category, rating, description, picture } = item
 
-  let $bigItem = `<main class='container'>
-                      <div class="row">
-                        <div class="col-md-8 col-md-offset-2 col-xs-12">
-                          <div class="display-box">
-                            <img src="${picture}">
-                            <div>
-                              <h2>${name}</h2>
-                              <h4>Category: ${category}</h4>
-                              <h4>Rating: ${rating}</h4>
-                              <h4>Description: ${description}</h4>
-                              <button type="button" class="add-item">Add to List</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </main>`;
-  $('body').empty().append($bigItem);
-}
+//   let $bigItem = `<main class='container'>
+//                       <div class="row">
+//                         <div class="col-md-8 col-md-offset-2 col-xs-12">
+//                           <div class="display-box">
+//                             <img src="${picture}">
+//                             <div>
+//                               <h2>${name}</h2>
+//                               <h4>Category: ${category}</h4>
+//                               <h4>Rating: ${rating}</h4>
+//                               <h4>Description: ${description}</h4>
+//                               <button type="button" class="add-item">Add to List</button>
+//                             </div>
+//                           </div>
+//                         </div>
+//                       </div>
+//                     </main>`;
+//   $('body').empty().append($bigItem);
+// }
 
 function renderSearch(item) {
   var $search = `<div class="row">
-                  <div class="col-md-6 col-md-offset-3 col-xs-12">
+                  <div class="col-md-10 col-md-offset-1 col-xs-12">
                     <div class="search-container">
                       <input class="search-bar" placeholder="Search your book">
                       <div class='auto-complete'>

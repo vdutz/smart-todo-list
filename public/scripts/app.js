@@ -109,7 +109,6 @@ $(document).ready(function() {
     renderLogin();
   });
 
-
   $("body").on('click', '.switch-to-login', function(event){
     renderLogin();
   });
