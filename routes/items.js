@@ -34,7 +34,7 @@ module.exports = (knex) => {
       })
       .catch((err) => {
         res.status(404).send(err)
-        console.log("Error adding item to database")
+        console.log("Error deleting item from database")
       })
   })
 

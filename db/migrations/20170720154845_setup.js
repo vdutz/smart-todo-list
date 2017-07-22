@@ -4,15 +4,15 @@ exports.up = function(knex, Promise) {
       table.increments('id');
       table.string('name');
       table.string('category');
-      table.float('rating');
+      table.string('rating');
       table.string('description');
       table.string('picture');
     }),
     knex.schema.createTable('users', function(table){
       table.increments('id');
+      table.string('username');
       table.string('email');
       table.string('password');
-      table.string('nickname');
     }),
     knex.schema.createTable('users_items', function(table){
       table.increments('id');

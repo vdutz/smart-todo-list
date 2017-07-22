@@ -6,9 +6,9 @@ const rp = require('request-promise')
 const amazon = require('amazon-product-api')
 
 const client = amazon.createClient({
-  awsId: "AKIAI2XTFCV3TMNLTV4Q",
-  awsSecret: "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",
-  awsTag: "vdassociate-20"
+  awsId: process.env.AWSID,
+  awsSecret: process.env.AWSSECRET,
+  awsTag: process.env.AWSTAG
 })
 
 
@@ -20,7 +20,7 @@ module.exports = (knex) => {
     var requestName = req.query.searchTerms
     var requestBook = 'https://www.googleapis.com/books/v1/volumes?q=' + requestName
     // var requestPlace = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${requestName}&key=AIzaSyBzJXtH_RQSozV9UcLOwRnXycS3ktiesjQ&location=43.6532,-79.3832&radius=2000`
-    var requestMovie = 'https://api.themoviedb.org/3/search/movie?api_key=6b9040e6b69a988ffe21732fb57c373f&query=' + requestName
+    var requestMovie = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIEKEY}&query=` + requestName
     var requestPlace = `https://api.yelp.com/v3/businesses/search?term=${requestName}&latitude=43.6532&longitude=-79.3832&radius=8000&categories=restaurants,food`
     var requestNameUnderscore = req.query.searchTerms.replace("+", "_")
 
@@ -31,7 +31,7 @@ module.exports = (knex) => {
           method: 'GET'}),
       rp({uri: requestPlace,
           method: 'GET',
-          headers: {'Authorization': authorizationToken}}),
+          headers: {'Authorization': process.env.PLACEKEY}}),
       // client.itemSearch({
       //   Keywords: requestNameUnderscore
       // })

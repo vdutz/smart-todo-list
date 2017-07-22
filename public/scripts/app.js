@@ -99,6 +99,8 @@ const testItem = {
 $(document).ready(function() {
   // renderItems(initial_items);
 
+  checkUser();
+
   loadList();
 
   $(".nav-list").on('click', function(event){
@@ -107,6 +109,10 @@ $(document).ready(function() {
 
   $(".nav-login").on('click', function(event){
     renderLogin();
+  });
+
+  $("body").on('click', '.nav-register', function(event){
+    renderRegister();
   });
 
   $("body").on('click', '.switch-to-login', function(event){
@@ -120,6 +126,18 @@ $(document).ready(function() {
   //click search to render search bar
   $(".nav-search").on('click', function(event){
     renderSearch();
+  });
+
+  $("body").on('submit', '.submit-register', function(event){
+    event.preventDefault();
+    console.log($(this))
+    userRegister($(this));
+  });
+
+  $("body").on('submit', '.submit-login', function(event){
+    event.preventDefault();
+    console.log($(this))
+    userLogin($(this));
   });
 
   $("body").on('submit', ".add-item-form", function(event){

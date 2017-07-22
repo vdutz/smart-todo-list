@@ -24,9 +24,10 @@
 .nav-button {
   margin:25px 5px;
   float: right;
+  cursor: pointer;
 }
 
-.nav-login {
+/*.nav-login {
   cursor: pointer;
 }
 
@@ -36,4 +37,4 @@
 
 .nav-list {
   cursor: pointer;
-}
+}*/

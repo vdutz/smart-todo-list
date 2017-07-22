@@ -31,14 +31,15 @@ function renderRegister() {
                         <div class="row">
                           <div class="col-md-4 col-md-offset-4 col-xs-12">
                             <div class="login-box">
-                              <img src="images/todolist.png"">
+                              <h2>Registration</h2>
+                              <img src="images/todolist.png""><br><br>
                               <form class="login-form">
-                                <input type="text" name="name" placeholder="Nickname" /><br><br>
+                                <input type="text" name="username" placeholder="Username" /><br><br>
                                 <input type="email" name="email" placeholder="Email" /><br><br>
                                 <input type="password" name="password" placeholder="Password" /><br><br>
-                                <input type="submit" name="submit" class="submit" value="Register" />
+                                <input type="submit" name="submit" class="submit-register" value="Register" />
                               </form><br>
-                              <a class="switch-to-login">Aleardy have an account?</a>
+                              <a class="switch-to-login">Already have an account?</a>
                             </div>
                           </div>
                         </div>
@@ -52,11 +53,12 @@ function renderLogin() {
                       <div class="row">
                         <div class="col-md-4 col-md-offset-4 col-xs-12">
                           <div class="login-box">
+                            <h2>Log In</h2>
                             <img src="images/todolist.png"">
-                            <form class="login-form">
+                            <form class="login-form"><br>
                               <input type="email" name="email" placeholder="Email" /><br><br>
                               <input type="password" name="password" placeholder="Password" /><br><br>
-                              <input type="submit" name="submit" class="submit" value="Log In" />
+                              <input type="submit" name="submit" class="submit-login" value="Log In" />
                             </form><br>
                             <a class="switch-to-register">Need an account?</a>
                           </div>
@@ -134,6 +136,47 @@ function deleteItem(item) {
       // $(".container .row").empty();
       // renderItems(itemsObject);
       console.log("POST succesful.")
+    }
+  })
+}
+
+
+function checkUser() {
+  $.ajax({
+    url: '/api/checkuser',
+    method: 'GET',
+    success: function(response) {
+      console.log("Succesful request")
+      console.log(response)
+      // $(".container .row").empty();
+      // renderItems(itemsObject);
+    }
+  })
+}
+
+function userRegister(user) {
+  $.ajax({
+    url: '/api/register',
+    method: 'POST',
+    data: item.serialize(),
+    success: function(response) {
+      console.log("Registration succesful!")
+      console.log(response)
+      // $(".container .row").empty();
+      // renderItems(itemsObject);
+    }
+  })
+}
+
+function userLogin(user) {
+  $.ajax({
+    url: '/api/login',
+    method: 'POST',
+    data: item.serialize(),
+    success: function(response) {
+      // $(".container .row").empty();
+      // renderItems(itemsObject);
+      console.log("Login succesful!")
     }
   })
 }

@@ -15,8 +15,12 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/items.js");
-const searchRoutes = require("./routes/search.js")
+const itemsRoutes = require("./routes/items.js");
+const searchRoutes = require("./routes/search.js");
+const checkUserRoutes = require("./routes/checkuser.js");
+const registerRoutes = require("./routes/register.js");
+const loginRoutes = require("./routes/login.js");
+
 // const usersRoutes2 = require("/routes/login");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -38,10 +42,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/items", usersRoutes(knex));
+app.use("/api/items", itemsRoutes(knex));
 app.use("/api/search", searchRoutes(knex));
-
-// app.use("/api/login", loginRoutes(knex));
+app.use("/api/checkuser", checkUserRoutes(knex));
+app.use("/api/register", registerRoutes(knex));
+app.use("/api/login", loginRoutes(knex));
 
 // Home page
 // app.get("/", (req, res) => {

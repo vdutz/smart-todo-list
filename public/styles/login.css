@@ -13,11 +13,13 @@
 .login-box .switch-to-register{
   border: 1px;
   color: white;
+  cursor: pointer;
 }
 
 .login-box .switch-to-login{
   border: 1px;
   color: white;
+  cursor: pointer;
 }
 
 input[type=email], input[type=password], input[type=text] {
