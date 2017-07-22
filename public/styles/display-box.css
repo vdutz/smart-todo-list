@@ -1,20 +1,24 @@
 .display-box {
   border: 4px solid black;
-  background-color: lightblue;
   padding: 10px;
   display: flex;
   flex-direction: row;
+  display: none;
+  color: red;
+  height: 600px;
+  background-size:contain;
 }
 
-.display-box img {
+/*.display-box img {
   height: 240px;
   flex-grow: 1;
-}
+}*/
 
 .display-box div {
   flex-grow: 1;
   padding: 10px;
   padding-left: 20px;
+  margin-bottom: 10px;
 }
 
 
@@ -24,4 +28,17 @@
 
 .display-box h4 {
   /*float: right;*/
+}
+
+.display-detail {
+  display: none;
+}
+
+.display-box:hover .display-detail {
+  display:block;
+}
+
+
+.add-item {
+
 }

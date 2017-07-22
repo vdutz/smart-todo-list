@@ -1,6 +1,3 @@
-// var authorizationToken = 'Bearer m6a_E2PEcwkACaWUggWcwu67URvZKqV6F_D_MqdZcmE1pxK8QyFGXyZaOcLKvvYTraQhc9redOiW_73frergq-Kjd--yvb6cP_iK5P9hxa47K6AQiDrdU5_yHEVyWXYx'
-
-
 
 $(document).ready(function() {
   $('body').on('input', '.search-bar', function(event) {
@@ -66,35 +63,83 @@ function readBookList(list) {
   $('.auto-complete').append($searchCardBar)
   for (let i=0; i<3; i++) {
     if (list.items[i].volumeInfo.title.length > 20){
-      shortenedName = list.items[i].volumeInfo.title.slice(0,25) + '...'
+      shortenedName = list.items[i].volumeInfo.title.slice(0,30) + '...'
       if (!list.items[i].volumeInfo.imageLinks) {
         let $searchCard =  `
-                        <div class='search-card'>
-                        <img src="http://edgelearningmedia.com/ele/img/book.png">
-                        <span> ${shortenedName}</span>
+                        <div class='auto-complete-item'>
+                          <div class='search-card'>
+                            <img src="http://edgelearningmedia.com/ele/img/book.png">
+                            <span>${shortenedName}</span>
+                          </div>
+                          <div class="display-box" style="background:url(http://edgelearningmedia.com/ele/img/book.png) no-repeat; background-size: cover;">
+                              <div class="display-detail">
+                                <h2>${shortenedName}</h2>
+                                <h4>Category: book</h4>
+                                <h4>Rating: ${list.items[i].volumeInfo.averageRating}</h4>
+                                <h4>Description: ${list.items[i].volumeInfo.description}</h4>
+                                <button type="button" class="add-item">Add to List</button>
+                              </div>
+                          </div>
+                        </div>
                        `
         $('.auto-complete').append($searchCard)
       } else {
         let $searchCard =  `
-                        <div class='search-card'>
-                        <img src="${list.items[i].volumeInfo.imageLinks.smallThumbnail}">
-                        <span> ${shortenedName}</span>
+                        <div class='auto-complete-item'>
+                          <div class='search-card'>
+                            <img src="${list.items[i].volumeInfo.imageLinks.smallThumbnail}">
+                            <span>${shortenedName}</span>
+                          </div>
+                          <div class="display-box" style="background:url(${list.items[i].volumeInfo.imageLinks.smallThumbnail}) no-repeat; background-size: cover;">
+                              <div class="display-detail">
+                                <h2>${shortenedName}</h2>
+                                <h4>Category: book</h4>
+                                <h4>Rating: ${list.items[i].volumeInfo.averageRating}</h4>
+                                <h4>Description: ${list.items[i].volumeInfo.description}</h4>
+                                <button type="button" class="add-item">Add to List</button>
+                              </div>
+                          </div>
+                        </div>
                        `
         $('.auto-complete').append($searchCard)
       }
     } else {
       if (!list.items[i].volumeInfo.imageLinks) {
         let $searchCard =  `
-                        <div class='search-card'>
-                        <img src="http://edgelearningmedia.com/ele/img/book.png">
-                        <span> ${list.items[i].volumeInfo.title}</span>
+                        <div class='auto-complete-item'>
+                          <div class='search-card'>
+                            <img src="http://edgelearningmedia.com/ele/img/book.png">
+                            <span> ${list.items[i].volumeInfo.title}</span>
+                          </div>
+                          <div class="display-box" style="background:url(http://edgelearningmedia.com/ele/img/book.png) no-repeat; background-size: cover;">
+                              <div class="display-detail">
+                                <h2>${items[i].volumeInfo.title}</h2>
+                                <h4>Category: book</h4>
+                                <h4>Rating: ${list.items[i].volumeInfo.averageRating}</h4>
+                                <h4>Description: ${list.items[i].volumeInfo.description}</h4>
+                                <button type="button" class="add-item">Add to List</button>
+                              </div>
+                          </div>
+                        </div>
                        `
         $('.auto-complete').append($searchCard)
       } else {
         let $searchCard =  `
-                        <div class='search-card'>
-                        <img src="${list.items[i].volumeInfo.imageLinks.smallThumbnail}">
-                        <span> ${list.items[i].volumeInfo.title}</span>
+                        <div class='auto-complete-item'>
+                          <div class='search-card'>
+                            <img src="${list.items[i].volumeInfo.imageLinks.smallThumbnail}">
+                            <span> ${list.items[i].volumeInfo.title}</span>
+                          </div>
+                          <div class="display-box" style="background:url(${list.items[i].volumeInfo.imageLinks.smallThumbnail}) no-repeat; background-size: cover;">
+                              <div class="display-detail">
+                                <h2>${list.items[i].volumeInfo.title}</h2>
+                                <h4>Category: book</h4>
+                                <h4>Rating: ${list.items[i].volumeInfo.averageRating}</h4>
+                                <h4>Description: ${list.items[i].volumeInfo.description}</h4>
+                                <button type="button" class="add-item">Add to List</button>
+                              </div>
+                          </div>
+                        </div>
                        `
         $('.auto-complete').append($searchCard)
       }
@@ -118,17 +163,41 @@ function readMovieList(list){
     if (!list.results[i].poster_path) {
       imageURL = 'https://www.themoviedb.org/assets/static_cache/23e473036b28a59bd5dcfde9c671b1c5/images/v4/logos/312x276-primary-green.png'
       let $searchCard =  `
-                        <div class='search-card'>
-                        <img src=${imageURL}>
-                        <span> ${list.results[i].title}</span>
+                        <div class='auto-complete-item'>
+                          <div class='search-card'>
+                            <img src=${imageURL}>
+                            <span> ${list.results[i].title}</span>
+                          </div>
+                          <div class="display-box" style="background:url(${imageURL}) no-repeat; background-size: cover;">
+                              <div class="display-detail">
+                                <h2>${list.results[i].title}</h2>
+                                <h4>Category: movie</h4>
+                                <h4>Rating: ${list.results[i].vote_average}</h4>
+                                <h4>Description: ${list.results[i].overview}</h4>
+                                <button type="button" class="add-item">Add to List</button>
+                              </div>
+                          </div>
+                        </div>
                        `
     $('.auto-complete').append($searchCard)
     } else {
       imageURL = 'http://image.tmdb.org/t/p/w185/' + list.results[i].poster_path
     let $searchCard =  `
-                        <div class='search-card'>
-                        <img src=${imageURL}>
-                        <span> ${list.results[i].title}</span>
+                        <div class='auto-complete-item'>
+                          <div class='search-card'>
+                            <img src=${imageURL}>
+                            <span> ${list.results[i].title}</span>
+                          </div>
+                          <div class="display-box" style="background:url(${imageURL}) no-repeat; background-size: cover;">
+                              <div class="display-detail">
+                                <h2>${list.results[i].title}</h2>
+                                <h4>Category: movie</h4>
+                                <h4>Rating: ${list.results[i].vote_average}</h4>
+                                <h4>Description: ${list.results[i].overview}</h4>
+                                <button type="button" class="add-item">Add to List</button>
+                              </div>
+                          </div>
+                        </div>
                        `
     $('.auto-complete').append($searchCard)
     }
@@ -150,16 +219,40 @@ function readPlaceList(list) {
   for (let i=0; i<3; i++) {
     if (!list.businesses[i].image_url) {
       let $searchCard =  `
-                        <div class='search-card'>
-                        <img src="http://www.rockymountainfoodtours.com/wp-content/uploads/2015/08/yelp.png">
-                        <span> ${list.businesses[i].name}</span>
+                        <div class='auto-complete-item'>
+                          <div class='search-card'>
+                            <img src="http://www.rockymountainfoodtours.com/wp-content/uploads/2015/08/yelp.png">
+                            <span> ${list.businesses[i].name}</span>
+                          </div>
+                          <div class="display-box" style="background:url(http://www.rockymountainfoodtours.com/wp-content/uploads/2015/08/yelp.png) no-repeat; background-size: cover;">
+                              <div class="display-detail">
+                                <h2>${list.businesses[i].name}</h2>
+                                <h4>Category: restaurant</h4>
+                                <h4>Rating: ${list.businesses[i].rating}</h4>
+                                <h4>Description: </h4>
+                                <button type="button" class="add-item">Add to List</button>
+                              </div>
+                          </div>
+                        </div>
                        `
       $('.auto-complete').append($searchCard)
     } else {
       let $searchCard =  `
-                        <div class='search-card'>
-                        <img src="${list.businesses[i].image_url}">
-                        <span> ${list.businesses[i].name}</span>
+                        <div class='auto-complete-item'>
+                          <div class='search-card'>
+                            <img src="${list.businesses[i].image_url}">
+                            <span> ${list.businesses[i].name}</span>
+                          </div>
+                          <div class="display-box" style="background:url(${list.businesses[i].image_url}) no-repeat; background-size: cover;">
+                              <div class="display-detail">
+                                <h2>${list.businesses[i].name}</h2>
+                                <h4>Category: restaurant</h4>
+                                <h4>Rating: ${list.businesses[i].rating}</h4>
+                                <h4>Description: </h4>
+                                <button type="button" class="add-item">Add to List</button>
+                              </div>
+                          </div>
+                        </div>
                        `
       $('.auto-complete').append($searchCard)
     // console.log(list.businesses[i].image_URL)
