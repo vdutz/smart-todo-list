@@ -62,15 +62,18 @@ exports.seed = function(knex, Promise) {
       return knex('users').insert([
         {username: "Mr. Test",
         email: "test@test.com",
-        password: "test"
+        password: "test",
+        session_id: "abc123"
         },
         {username: "Mr. example",
         email: "example@example.com",
-        password: "example"
+        password: "example",
+        session_id: ""
         },
         {username: "Janey",
         email: "jane@doe.com",
-        password: "jane"
+        password: "jane",
+        session_id: "def456"
         }
       ])
     }),

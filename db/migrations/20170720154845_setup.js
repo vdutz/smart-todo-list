@@ -13,6 +13,7 @@ exports.up = function(knex, Promise) {
       table.string('username');
       table.string('email');
       table.string('password');
+      table.string('session_id')
     }),
     knex.schema.createTable('users_items', function(table){
       table.increments('id');
