@@ -117,13 +117,13 @@ function readBookList(list) {
                           </div>
                           <div class="display-box" style="background:url(http://edgelearningmedia.com/ele/img/book.png) no-repeat; background-size: cover;">
                             <span>
-                            <div class="display-detail">
-                              <h2>${list.items[i].volumeInfo.title}</h2>
-                              <h4>Category: book</h4>
-                              <h4>Rating: ${list.items[i].volumeInfo.averageRating}</h4>
-                              <h4>Description: ${list.items[i].volumeInfo.description}</h4>
-                              <button type="button" class="add-item">Add to List</button>
-                            </div>
+                              <div class="display-detail">
+                                <h2>${list.items[i].volumeInfo.title}</h2>
+                                <h4>Category: book</h4>
+                                <h4>Rating: ${list.items[i].volumeInfo.averageRating}</h4>
+                                <h4>Description: ${list.items[i].volumeInfo.description}</h4>
+                                <button type="button" class="add-item">Add to List</button>
+                              </div>
                             </span>
                           </div>
                         </div>
