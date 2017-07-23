@@ -63,10 +63,11 @@ function loadFilters() {
 
 
 // Load nav bar
-function loadNavBar() {
+function loadNavBar(response) {
+  const {username} = response[0];
   var $navBar = `<nav id="nav-bar">
                   <img class="logo" src="images/todolist.png">
-                  <span class="header">SmarToDo</span>
+                  <span class="header">SmarToDo Hello ${username}!</span>
                   <span class="nav-button nav-list">
                     <i class="fa fa-list-ol" aria-hidden="true"></i>
                     My List
@@ -74,14 +75,6 @@ function loadNavBar() {
                   <span class="nav-button nav-search">
                     <i class="fa fa-search" aria-hidden="true"></i>
                     Search
-                  </span>
-                  <span class="nav-button nav-login">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                    Login
-                  </span>
-                  <span class="nav-button nav-register">
-                    <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    Register
                   </span>
                   <span class="nav-button nav-logout">
                     Logout
@@ -253,11 +246,12 @@ function checkUser() {
     method: 'GET',
     success: function(response) {
       console.log("Match found. User is logged in.", response)
-      // $(".container .row").empty();
+      loadNavBar(response);
       // renderItems(itemsObject);
     },
     error: function (err) {
       console.log("No entry found.  User is not logged in.")
+      renderLogin();
     }
   })
 }
@@ -271,7 +265,7 @@ function userRegister(user) {
     success: function(response) {
       console.log("Registration succesful!")
       console.log("Respone: ", response)
-      loadNavBar()
+      checkUser()
       // loadFilters()
       loadList()
     }
@@ -287,7 +281,7 @@ function userLogin(user) {
       // $(".container .row").empty();
       // renderItems(itemsObject);
       console.log("Login succesful!")
-      loadNavBar()
+      checkUser()
       // console.log("Hey wassap?")
       // loadFilters()
       loadList()

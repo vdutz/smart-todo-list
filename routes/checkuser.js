@@ -7,7 +7,7 @@ module.exports = (knex) => {
 
   router.get("/", (req, res) => {
     knex
-    .select("*")
+    .select("username")
     .from('users')
     .where('session_id', req.session.user_id)
     .then((results) => {

@@ -99,9 +99,9 @@ const testItem = {
 $(document).ready(function() {
   // renderItems(initial_items);
 
-  // checkUser();
+  checkUser();
 
-  // loadList();
+  loadList();
 
   $("body").on('click', '.nav-list',function(event){
     $(".container .row").empty();

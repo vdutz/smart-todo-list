@@ -31,11 +31,11 @@ module.exports = (knex) => {
           method: 'GET'}),
       rp({uri: requestPlace,
           method: 'GET',
-          headers: {'Authorization': process.env.PLACEKEY}}),
-      client.itemSearch({
-        Keywords: requestNameUnderscore
-        // Timestamp: "2017-07-23T13:07:34.770Z"
-      })
+          headers: {'Authorization': process.env.PLACEKEY}})
+      // client.itemSearch({
+      //   Keywords: requestNameUnderscore
+      //   // Timestamp: "2017-07-23T13:07:34.770Z"
+      // })
     ])
     .then(function (results) {
       // console.log(results[2])
