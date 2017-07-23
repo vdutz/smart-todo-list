@@ -1,3 +1,12 @@
+function generateRandomString() {
+  var myArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "G", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  var myString = "";
+  for (var i = 0; i < 6; i++) {
+    myString += myArray[Math.floor(Math.random() * myArray.length)];
+  }
+  return myString;
+}
+
 function createItemElement(itemdata) {
   const { name, category, rating, description, picture } = itemdata;
 
@@ -25,7 +34,41 @@ function renderItems(items) {
   })
 }
 
-////Replace the entire container and append with register page///
+// Load nav bar
+function loadNavBar() {
+var $navBar = `<nav id="nav-bar">
+                <img class="logo" src="images/todolist.png">
+                <span class="header">SmarToDo</span>
+                <span class="nav-button nav-list">
+                  <i class="fa fa-list-ol" aria-hidden="true"></i>
+                  My List
+                  </span>
+                <span class="nav-button nav-search">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                  Search
+                  </span>
+                <span class="nav-button nav-login">
+                  <i class="fa fa-sign-in" aria-hidden="true"></i>
+                  Login
+                </span>
+                <span class="nav-button nav-register">
+                  <i class="fa fa-user-plus" aria-hidden="true"></i>
+                  Register
+                </span>
+                <span class="nav-button nav-logout">
+                  Logout
+                </span>
+              </nav>`
+  $('body').empty().append($navBar);
+  var $container = `<main class="container">
+                      <div class="row">
+
+                      </div>
+                    </main>`
+  $('body').append($container);
+}
+
+////Replace the entire container and append with register page////
 function renderRegister() {
   var $registerPage = `<main class='container'>
                         <div class="row">
@@ -146,10 +189,12 @@ function checkUser() {
     url: '/api/checkuser',
     method: 'GET',
     success: function(response) {
-      console.log("Succesful request")
-      console.log(response)
+      console.log("Match found. User is logged in.", response)
       // $(".container .row").empty();
       // renderItems(itemsObject);
+    },
+    error: function (err) {
+      console.log("No entry found.  User is not logged in.")
     }
   })
 }
@@ -162,9 +207,9 @@ function userRegister(user) {
     data: user.serialize(),
     success: function(response) {
       console.log("Registration succesful!")
-      console.log(response)
-      // $(".container .row").empty();
-      // renderItems(itemsObject);
+      console.log("Respone: ", response)
+      loadNavBar()
+      loadList()
     }
   })
 }
@@ -173,11 +218,29 @@ function userLogin(user) {
   $.ajax({
     url: '/api/login',
     method: 'POST',
-    data: item.serialize(),
+    data: user.serialize(),
     success: function(response) {
       // $(".container .row").empty();
       // renderItems(itemsObject);
       console.log("Login succesful!")
+    },
+    error: function(err) {
+      console.log("Incorrect email or password")
+    }
+  })
+}
+
+function userLogout() {
+  $.ajax({
+    url: '/api/login',
+    method: 'DELETE',
+    success: function(response) {
+      // $(".container .row").empty();
+      // renderItems(itemsObject);
+      console.log("Logout succesful!")
+    },
+    error: function(err) {
+      console.log("Unable to logout")
     }
   })
 }

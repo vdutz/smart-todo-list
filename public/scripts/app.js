@@ -111,8 +111,21 @@ $(document).ready(function() {
     renderLogin();
   });
 
+  $(".nav-checkuser").on('click', function(event){
+    checkUser();
+  });
+
+  $(".nav-login").on('click', function(event){
+    renderLogin();
+  });
+
   $("body").on('click', '.nav-register', function(event){
     renderRegister();
+  });
+
+  $("body").on('click', '.nav-logout', function(event){
+    userLogout();
+    renderLogin();
   });
 
   $("body").on('click', '.switch-to-login', function(event){
@@ -134,7 +147,7 @@ $(document).ready(function() {
     userRegister($(this));
   });
 
-  $("body").on('submit', '.submit-login', function(event){
+  $("body").on('submit', '.login-form', function(event){
     event.preventDefault();
     console.log($(this))
     userLogin($(this));

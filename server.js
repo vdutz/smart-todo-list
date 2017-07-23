@@ -7,6 +7,7 @@ const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
+const cookieSession = require('cookie-session');
 const app         = express();
 
 const knexConfig  = require("./knexfile");
@@ -21,7 +22,10 @@ const checkUserRoutes = require("./routes/checkuser.js");
 const registerRoutes = require("./routes/register.js");
 const loginRoutes = require("./routes/login.js");
 
-// const usersRoutes2 = require("/routes/login");
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
