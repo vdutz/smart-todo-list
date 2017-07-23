@@ -199,12 +199,6 @@ $(document).ready(function() {
     userLogin($(this));
   });
 
-  $("body").on('submit', '.login-form', function(event){
-    event.preventDefault();
-    console.log($(this))
-    userLogin($(this));
-  });
-
   $("body").on('submit', ".profile-list-edit", function(event){
     event.preventDefault();
     console.log($(this))

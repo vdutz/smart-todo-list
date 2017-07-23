@@ -64,7 +64,7 @@ function loadFilters() {
 
 // Load nav bar
 function loadNavBar(response) {
-  const {username} = response[0];
+  const {username} = response['0'];
   var $navBar = `<nav id="nav-bar">
                   <img class="logo" src="images/todolist.png">
                   <span class="header">SmarToDo Hello ${username}!</span>
@@ -287,7 +287,7 @@ function userLogin(user) {
       loadList()
     },
     error: function(err) {
-      console.log("Incorrect email or password")
+      alert("Incorrect email or password")
     }
   })
 }
@@ -315,8 +315,7 @@ function userEditProfile(user) {
       // $(".container .row").empty();
       // renderItems(itemsObject);
       console.log("Login succesful!")
-      loadNavBar()
-      loadFilters()
+      checkUser()
       loadList()
     },
     error: function(err) {
