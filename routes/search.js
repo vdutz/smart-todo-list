@@ -7,8 +7,8 @@ const amazon = require('amazon-product-api')
 
 const client = amazon.createClient({
   awsId: process.env.AWSID,
-  awsSecret: process.env.AWSSECRET,
-  awsTag: process.env.AWSTAG
+  awsSecret: process.env.AWSSECRET
+  // awsTag: process.env.AWSTAG
 })
 
 
@@ -31,14 +31,15 @@ module.exports = (knex) => {
           method: 'GET'}),
       rp({uri: requestPlace,
           method: 'GET',
-          headers: {'Authorization': process.env.PLACEKEY}})
-      // client.itemSearch({
-      //   Keywords: requestNameUnderscore
-      //   // Timestamp: "2017-07-23T13:07:34.770Z"
-      // })
+          headers: {'Authorization': process.env.PLACEKEY}}),
+      client.itemSearch({
+        Keywords: requestNameUnderscore
+        // Timestamp: "2017-07-23T13:07:34.770Z"
+      })
     ])
     .then(function (results) {
       // console.log(results[2])
+      console.log(results[3])
       res.send(results)
     })
     .catch(function (err) {

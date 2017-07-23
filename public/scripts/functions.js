@@ -8,8 +8,9 @@ function generateRandomString() {
 }
 
 function createItemElement(itemdata) {
-  const { name, category, rating, description, picture } = itemdata;
-  itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4">
+  const { name, category, rating, description, picture, complete_status } = itemdata;
+
+  itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4 ${category} ${complete_status}">
                   <div class="box-inner" style="background:url(${picture}) no-repeat; background-size: cover;)">
                     <span>
                       <div class="item-element-detail">
@@ -36,28 +37,28 @@ function renderItems(items) {
 // Load filters
 function loadFilters() {
   var $filtersBar = `<div class="box-outer col-xs-12 col-sm-12 col-md-12">
-                      <div class="box-inner">
-                        <span class="filter-button filter-list books">
+                      <div class="filter-inner">
+                        <button class="filter-button book">
                           Books
-                        </span>
-                        <span class="filter-button filter-list movies">
+                        </button>
+                        <button class="filter-button movie">
                           Movies
-                        </span>
-                        <span class="filter-button filter-list restaurant">
+                        </button>
+                        <button class="filter-button restaurant">
                           Restaurants
-                        </span>
-                        <span class="filter-button filter-list all">
+                        </button>
+                        <button class="filter-button all">
                           All
-                        </span>
-                        <span class="filter-button filter-list books">
+                        </button>
+                        <button class="filter-button complete">
                           Complete
-                        </span>
-                        <span class="filter-button filter-list books">
+                        </button>
+                        <button class="filter-button todo">
                           To Do
-                        </span>
+                        </button>
                       </div>
                     </div>`
-  $('body .container .row').append($filtersBar);
+  $('.row').append($filtersBar);
 }
 
 
@@ -199,7 +200,8 @@ function loadList(){
     url: '/api/items',
     method: 'GET',
     success: function(itemsObject) {
-      $(".container .row").empty();
+      // $(".container .row").empty();
+      loadFilters()
       renderItems(itemsObject);
     }
   })
@@ -270,7 +272,7 @@ function userRegister(user) {
       console.log("Registration succesful!")
       console.log("Respone: ", response)
       loadNavBar()
-      loadFilters()
+      // loadFilters()
       loadList()
     }
   })
@@ -286,7 +288,8 @@ function userLogin(user) {
       // renderItems(itemsObject);
       console.log("Login succesful!")
       loadNavBar()
-      loadFilters()
+      // console.log("Hey wassap?")
+      // loadFilters()
       loadList()
     },
     error: function(err) {

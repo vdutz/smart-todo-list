@@ -104,6 +104,7 @@ $(document).ready(function() {
   // loadList();
 
   $("body").on('click', '.nav-list',function(event){
+    $(".container .row").empty();
     loadList();
   });
 
@@ -147,6 +148,43 @@ $(document).ready(function() {
   //click search to render search bar
   $("body").on('click', '.nav-search', function(event){
     renderSearch();
+  });
+
+  $("body").on('click', '.filter-button.book', function(event){
+    $('.box-outer.book').removeClass('hide')
+    $('.box-outer.movie').addClass('hide')
+    $('.box-outer.restaurant').addClass('hide')
+  });
+
+  $("body").on('click', '.filter-button.movie', function(event){
+    $('.box-outer.movie').removeClass('hide')
+    $('.box-outer.book').addClass('hide')
+    $('.box-outer.restaurant').addClass('hide')
+  });
+
+  $("body").on('click', '.filter-button.restaurant', function(event){
+    $('.box-outer.restaurant').removeClass('hide')
+    $('.box-outer.book').addClass('hide')
+    $('.box-outer.movie').addClass('hide')
+  });
+
+  $("body").on('click', '.filter-button.all', function(event){
+    $('.box-outer.restaurant').removeClass('hide')
+    $('.box-outer.book').removeClass('hide')
+    $('.box-outer.movie').removeClass('hide')
+    $('.box-outer.todo').removeClass('hide')
+    $('.box-outer.complete').removeClass('hide')
+
+  });
+
+  $("body").on('click', '.filter-button.complete', function(event){
+    $('.box-outer.complete').removeClass('hide')
+    $('.box-outer.todo').addClass('hide')
+  });
+
+  $("body").on('click', '.filter-button.todo', function(event){
+    $('.box-outer.todo').removeClass('hide')
+    $('.box-outer.complete').addClass('hide')
   });
 
   $("body").on('submit', '.register-form', function(event){

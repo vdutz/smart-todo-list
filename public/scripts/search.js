@@ -37,10 +37,13 @@ $(document).ready(function() {
     //   })
     // ])
     .done(function (results){
+      console.log(results[3])
       let bookResult = JSON.parse(results[0])
       let movieResult = JSON.parse(results[1])
       let placeResult = JSON.parse(results[2])
+      let productResult = results[3]
       // console.log("Amazon Results, baby: \n\n", JSON.parse(results[3]))
+      console.log(productResult)
       readBookList(bookResult)
       readMovieList(movieResult)
       readPlaceList(placeResult)

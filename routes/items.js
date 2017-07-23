@@ -13,7 +13,7 @@ module.exports = (knex) => {
     knex("users")
     .join('users_items', 'users.id', '=', 'users_items.user_id')
     .join('items', 'items.id', '=', 'users_items.item_id')
-    .select('items.id', 'items.name', 'items.category', 'items.rating', 'items.description', 'items.picture')
+    .select('items.id', 'items.name', 'items.category', 'items.rating', 'items.description', 'items.picture', 'users_items.complete_status')
     // .from("items")
     .where('session_id', req.session.user_id)
     .then((results) => {
