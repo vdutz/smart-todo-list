@@ -31,13 +31,13 @@ module.exports = (knex) => {
           method: 'GET'}),
       rp({uri: requestPlace,
           method: 'GET',
-          headers: {'Authorization': process.env.PLACEKEY}}),
+          headers: {'Authorization': process.env.PLACEKEY}})
       // client.itemSearch({
       //   Keywords: requestNameUnderscore
       // })
     ])
     .then(function (results) {
-      console.log(results[2])
+      // console.log(results[2])
       res.send(results)
     })
     .catch(function (err) {

@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
       table.string('name');
       table.string('category');
       table.string('rating');
-      table.string('description');
+      table.string('description', 2000);
       table.string('picture');
     }),
     knex.schema.createTable('users', function(table){

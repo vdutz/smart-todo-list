@@ -171,7 +171,7 @@ $(document).ready(function() {
   $("body").on('click', ".display-box .add-item", function(event){
     event.preventDefault();
     let siblings = $(this).siblings()
-    let picture = $(this).parent().parent().siblings().children()[0].src
+    let picture = $(this).parent().parent().parent().siblings().children()[0].src
     let name = siblings[0].innerHTML
     let category = siblings[1].innerHTML.replace("Category: ", "")
     let rating = siblings[2].innerHTML.replace("Rating: ", "")

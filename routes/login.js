@@ -25,22 +25,34 @@ module.exports = (knex) => {
     .where('email', req.body.email)
     .andWhere('password', req.body.password)
     .then((results) => {
-      console.log("Results: ", results)
-      knex('users')
-      .where('email', req.body.email)
-      .update('session_id', user_id)
-      .then((results2) => {
-        res.status(200).send(results2);
-      })
-      .catch((err) => {
-        console.log("Could not add session_id.")
-        res.status(404).send(err)
-      })
-      res.status(200).send(results);
+      if (results.length === 0) {
+        console.log("Could not find email/password match.")
+        res.status(404).send()
+      } else {
+        console.log("Results: ", results)
+        knex('users')
+        .where('email', req.body.email)
+        .update('session_id', user_id)
+        .then((results2) => {
+          console.log("Results2: ", results2)
+          if (results2 == 1) {
+            res.status(200).send();
+          } else {
+            console.log("Update session_id failed.")
+            res.status(404).send()
+          }
+
+        })
+        // .catch((err) => {
+        //   console.log("Update session_id failed.")
+        //   res.status(404).send(err)
+        // })
+      }
+
+      // res.status(200).send(results);
     })
     .catch((err) => {
-      console.log("Could not find email/password match.")
-      res.status(404).send(err)
+      console.log("Check search failed.")
     })
 
   });
@@ -52,11 +64,12 @@ module.exports = (knex) => {
     .where('session_id', token)
     .update({session_id: ''})
     .then((results) => {
-      res.status(200).send(results);
+      console.log("Logout results: ", results)
+      res.status(200).send();
     })
     .catch((err) => {
       console.log("Could not logout.")
-      res.status(404).send(err)
+      res.status(404).send()
     })
   })
 

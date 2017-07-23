@@ -28,7 +28,7 @@ module.exports = (knex) => {
       })
       .catch((err) => {
         console.log("Error adding user to database")
-        res.status(404).send(err)
+        res.status(404).send()
       })
   });
 
