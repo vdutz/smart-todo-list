@@ -101,7 +101,7 @@ $(document).ready(function() {
 
   checkUser();
 
-  loadList();
+  // loadList();
 
   $("body").on('click', '.nav-list',function(event){
     $(".container .row").empty();

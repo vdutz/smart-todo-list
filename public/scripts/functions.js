@@ -248,6 +248,7 @@ function checkUser() {
       console.log("Match found. User is logged in.", response)
       loadNavBar(response);
       // renderItems(itemsObject);
+      loadList()
     },
     error: function (err) {
       console.log("No entry found.  User is not logged in.")
@@ -267,7 +268,6 @@ function userRegister(user) {
       console.log("Respone: ", response)
       checkUser()
       // loadFilters()
-      loadList()
     }
   })
 }
@@ -282,9 +282,12 @@ function userLogin(user) {
       // renderItems(itemsObject);
       console.log("Login succesful!")
       checkUser()
-      // console.log("Hey wassap?")
-      // loadFilters()
-      loadList()
+      console.log('wait')
+      console.log('wait')
+      console.log('wait')
+      console.log('wait')
+      console.log('wait')
+      // loadList()
     },
     error: function(err) {
       alert("Incorrect email or password")
