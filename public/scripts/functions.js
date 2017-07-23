@@ -13,13 +13,13 @@ function createItemElement(itemdata) {
   itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4">
                   <div class="box-inner" style="background:url(${picture}) no-repeat; background-size: cover;)">
                     <span>
-                    <div class="item-element-detail">
-                      <h4>${name}</h4>
-                      <p>Type: ${category}</p>
-                      <p>Rating: ${rating}</p>
-                      <p>${description}</p>
-                      <button type=button class="remove-item">Remove from List</button>
-                    </div>
+                      <div class="item-element-detail">
+                        <h4>${name}</h4>
+                        <p>Type: ${category}</p>
+                        <p>Rating: ${rating}</p>
+                        <p>${description}</p>
+                        <button type=button class="remove-item">Remove from List</button>
+                      </div>
                     </span>
                   </div>
                 </div>`
@@ -34,31 +34,59 @@ function renderItems(items) {
   })
 }
 
+// Load filters
+function loadFilters() {
+  var $filtersBar = `<div class="box-outer col-xs-12 col-sm-12 col-md-12">
+                      <div class="box-inner">
+                        <span class="filter-button filter-list books">
+                          Books
+                        </span>
+                        <span class="filter-button filter-list movies">
+                          Movies
+                        </span>
+                        <span class="filter-button filter-list restaurant">
+                          Restaurants
+                        </span>
+                        <span class="filter-button filter-list all">
+                          All
+                        </span>
+                        <span class="filter-button filter-list books">
+                          Complete
+                        </span>
+                        <span class="filter-button filter-list books">
+                          To Do
+                        </span>
+                      </div>
+                    </div>`
+  $('body .container .row').append($filtersBar);
+}
+
+
 // Load nav bar
 function loadNavBar() {
-var $navBar = `<nav id="nav-bar">
-                <img class="logo" src="images/todolist.png">
-                <span class="header">SmarToDo</span>
-                <span class="nav-button nav-list">
-                  <i class="fa fa-list-ol" aria-hidden="true"></i>
-                  My List
+  var $navBar = `<nav id="nav-bar">
+                  <img class="logo" src="images/todolist.png">
+                  <span class="header">SmarToDo</span>
+                  <span class="nav-button nav-list">
+                    <i class="fa fa-list-ol" aria-hidden="true"></i>
+                    My List
                   </span>
-                <span class="nav-button nav-search">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                  Search
+                  <span class="nav-button nav-search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    Search
                   </span>
-                <span class="nav-button nav-login">
-                  <i class="fa fa-sign-in" aria-hidden="true"></i>
-                  Login
-                </span>
-                <span class="nav-button nav-register">
-                  <i class="fa fa-user-plus" aria-hidden="true"></i>
-                  Register
-                </span>
-                <span class="nav-button nav-logout">
-                  Logout
-                </span>
-              </nav>`
+                  <span class="nav-button nav-login">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                    Login
+                  </span>
+                  <span class="nav-button nav-register">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    Register
+                  </span>
+                  <span class="nav-button nav-logout">
+                    Logout
+                  </span>
+                </nav>`
   $('body').empty().append($navBar);
   var $container = `<main class="container">
                       <div class="row">
@@ -209,6 +237,7 @@ function userRegister(user) {
       console.log("Registration succesful!")
       console.log("Respone: ", response)
       loadNavBar()
+      loadFilters()
       loadList()
     }
   })
@@ -224,6 +253,7 @@ function userLogin(user) {
       // renderItems(itemsObject);
       console.log("Login succesful!")
       loadNavBar()
+      loadFilters()
       loadList()
     },
     error: function(err) {
