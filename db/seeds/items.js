@@ -103,7 +103,7 @@ exports.seed = function(knex, Promise) {
         item_id: 5,
         complete_status: "todo"
         },
-        {user_id: 2,
+        {user_id: 3,
         item_id: 3,
         complete_status: "todo"
         },

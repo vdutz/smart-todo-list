@@ -103,19 +103,19 @@ $(document).ready(function() {
 
   // loadList();
 
-  $(".nav-list").on('click', function(event){
+  $("body").on('click', '.nav-list',function(event){
     loadList();
   });
 
-  $(".nav-login").on('click', function(event){
+  $("body").on('click', '.nav-login', function(event){
     renderLogin();
   });
 
-  $(".nav-checkuser").on('click', function(event){
+  $("body").on('click', '.nav-checkuser', function(event){
     checkUser();
   });
 
-  $(".nav-login").on('click', function(event){
+  $("body").on('click', '.nav-login', function(event){
     renderLogin();
   });
 
@@ -137,7 +137,7 @@ $(document).ready(function() {
   });
 
   //click search to render search bar
-  $(".nav-search").on('click', function(event){
+  $("body").on('click', '.nav-search', function(event){
     renderSearch();
   });
 

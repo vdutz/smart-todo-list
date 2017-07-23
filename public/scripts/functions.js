@@ -223,6 +223,8 @@ function userLogin(user) {
       // $(".container .row").empty();
       // renderItems(itemsObject);
       console.log("Login succesful!")
+      loadNavBar()
+      loadList()
     },
     error: function(err) {
       console.log("Incorrect email or password")
