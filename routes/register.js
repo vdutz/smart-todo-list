@@ -15,22 +15,45 @@ function generateRandomString() {
 
 module.exports = (knex) => {
 
-  router.post("/", (req, res) => {
-
-    console.log("Query Username: ", req.query.username)
-    console.log("Body Username: ", req.body.username)
-    let user_id = generateRandomString()
-    req.session.user_id = user_id
-    knex('users')
-      .insert({username: req.body.username, email: req.body.email, password: req.body.password, session_id: user_id})
+    router.post("/", (req, res) => {
+      let user_id = generateRandomString()
+      knex.from('users')
+      .select("*")
+      .where('email', req.body.email)
       .then((results) => {
-        res.json(results);
+        if (results.length === 0){
+          console.log("This email has not been used")
+          req.session.user_id = user_id
+          knex('users')
+            .insert({username: req.body.username, email: req.body.email, password: req.body.password, session_id: user_id})
+            .then((results) => {
+              res.json(results);
+            })
+            .catch((err) => {
+              console.log("Error adding user to database")
+              res.status(405).send()
+            })
+        } else {
+          console.log("This email has been used")
+          res.status(404).send()
+        }
       })
-      .catch((err) => {
-        console.log("Error adding user to database")
-        res.status(404).send()
-      })
-  });
+    })
+
+  // router.post("/", (req, res) => {
+  //   console.log("Body Username: ", req.body.username)
+  //   let user_id = generateRandomString()
+  //   req.session.user_id = user_id
+  //   knex('users')
+  //     .insert({username: req.body.username, email: req.body.email, password: req.body.password, session_id: user_id})
+  //     .then((results) => {
+  //       res.json(results);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Error adding user to database")
+  //       res.status(404).send()
+  //     })
+  // });
 
   return router;
 }

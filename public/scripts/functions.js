@@ -268,6 +268,9 @@ function userRegister(user) {
       console.log("Respone: ", response)
       checkUser()
       // loadFilters()
+    },
+    error: function(err) {
+      alert("This email has been used")
     }
   })
 }
