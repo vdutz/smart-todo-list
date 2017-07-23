@@ -1,5 +1,8 @@
 .filter-button {
   margin: 1%;
+  background-color: #8FD529;
+  border-radius: 5px;
+  border: 1px solid #8FD529
 }
 
 .filter-inner {
