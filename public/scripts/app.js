@@ -128,6 +128,14 @@ $(document).ready(function() {
     renderLogin();
   });
 
+  $("body").on('click', '.nav-profile', function(event){
+    checkUserProfile();
+  });
+
+  $("body").on('click', '.switch-to-update-profile', function(event){
+    renderProfileEdit();
+  });
+
   $("body").on('click', '.switch-to-login', function(event){
     renderLogin();
   });
@@ -153,10 +161,16 @@ $(document).ready(function() {
     userLogin($(this));
   });
 
-  $("body").on('submit', ".add-item-form", function(event){
+  $("body").on('submit', '.login-form', function(event){
     event.preventDefault();
     console.log($(this))
-    addItem($(this))
+    userLogin($(this));
+  });
+
+  $("body").on('submit', ".profile-list-edit", function(event){
+    event.preventDefault();
+    console.log($(this))
+    userEditProfile($(this))
   });
 
   ////Display box by clicking search box suggestion cards

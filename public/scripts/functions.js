@@ -9,7 +9,6 @@ function generateRandomString() {
 
 function createItemElement(itemdata) {
   const { name, category, rating, description, picture } = itemdata;
-
   itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4">
                   <div class="box-inner" style="background:url(${picture}) no-repeat; background-size: cover;)">
                     <span>
@@ -86,6 +85,9 @@ function loadNavBar() {
                   <span class="nav-button nav-logout">
                     Logout
                   </span>
+                  <span class="nav-button nav-profile">
+                    Profile
+                  </span>
                 </nav>`
   $('body').empty().append($navBar);
   var $container = `<main class="container">
@@ -116,6 +118,37 @@ function renderRegister() {
                         </div>
                       </main>`;
   $('body').empty().append($registerPage);
+}
+
+/////Replace the entire container and append with profile page///
+function renderProfile(response) {
+  const { username, email } = response[0];
+  var $profilePage = `<main class='container'>
+                        <div class="row">
+                          <div class="col-md-4 col-md-offset-4 col-xs-12">
+                            <div class="profile-box">
+                              <h2>User Profile</h2>
+                              <img src="images/todolist.png""><br><br>
+                                <span> Email: ${email} </span><br><br>
+                                <span> Username: ${username} </span><br><br>
+                              <a class="switch-to-update-profile">Change username and password?</a>
+                            </div>
+                          </div>
+                        </div>
+                      </main>`;
+  $('body').empty().append($profilePage);
+}
+/////page to edit user profile////
+function renderProfileEdit() {
+  var $profileForm = `<h2>Edit User Profile</h2>
+                      <img src="images/todolist.png""><br><br>
+                      <form class="profile-list-edit">
+                        <input type="text" name="username" placeholder="Username" /><br><br>
+                        <input type="password" name="password" placeholder="Password" /><br><br>
+                        <input type="submit" class="submit-update-profile" value="Update" />
+                      </form><br>
+                     `;
+  $('.profile-box').empty().append($profileForm);
 }
 
 /////// replace the whole container and append with login page
@@ -246,6 +279,39 @@ function userRegister(user) {
 function userLogin(user) {
   $.ajax({
     url: '/api/login',
+    method: 'POST',
+    data: user.serialize(),
+    success: function(response) {
+      // $(".container .row").empty();
+      // renderItems(itemsObject);
+      console.log("Login succesful!")
+      loadNavBar()
+      loadFilters()
+      loadList()
+    },
+    error: function(err) {
+      console.log("Incorrect email or password")
+    }
+  })
+}
+
+function checkUserProfile() {
+  $.ajax({
+    url: '/api/profile',
+    method: 'GET',
+    success: function(response) {
+      console.log("Match found. User is logged in.", response[0])
+      renderProfile(response);
+    },
+    error: function (err) {
+      console.log("No entry found.  User is not logged in.")
+    }
+  })
+}
+
+function userEditProfile(user) {
+  $.ajax({
+    url: '/api/profile',
     method: 'POST',
     data: user.serialize(),
     success: function(response) {

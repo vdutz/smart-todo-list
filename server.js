@@ -21,7 +21,7 @@ const searchRoutes = require("./routes/search.js");
 const checkUserRoutes = require("./routes/checkuser.js");
 const registerRoutes = require("./routes/register.js");
 const loginRoutes = require("./routes/login.js");
-
+const profileRoutes = require("./routes/profile.js");
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2']
@@ -51,7 +51,7 @@ app.use("/api/search", searchRoutes(knex));
 app.use("/api/checkuser", checkUserRoutes(knex));
 app.use("/api/register", registerRoutes(knex));
 app.use("/api/login", loginRoutes(knex));
-
+app.use("/api/profile", profileRoutes(knex));
 // Home page
 // app.get("/", (req, res) => {
 //   res.render("index");

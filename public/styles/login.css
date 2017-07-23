@@ -1,16 +1,16 @@
-.login-box, .register-box {
+.login-box, .register-box, .profile-box {
   border: 1px;
   border-radius: 3px;
   padding: 5px 10px 50px 10px;
   text-align: center;
 }
 
-.login-box img, .register-box img {
+.login-box img, .register-box img, .profile-box img{
   height: 90px;
   margin: 10px 0;
 }
 
-.login-box .switch-to-register, .register-box .switch-to-login{
+.login-box .switch-to-register, .register-box .switch-to-login, .switch-to-update-profile{
   border: 1px;
   color: white;
   cursor: pointer;
