@@ -16,8 +16,9 @@ function createItemElement(itemdata) {
                       <div class="item-element-detail">
                         <h4>${name}</h4>
                         <p>Type: ${category}</p>
-                        <p>Rating: ${rating}</p>
-                        <p>${description}</p>
+                        <p class='${category}'>Rating: ${rating}</p>
+                        <p class='${category}'>${description}</p>
+                        <a href='${description}' class='${category}'>Click here for Amazon product link</a><br><br>
                         <button type=button class="remove-item">Remove from List</button>
                       </div>
                     </span>

@@ -41,10 +41,11 @@ $(document).ready(function() {
       let movieResult = JSON.parse(results[1])
       let placeResult = JSON.parse(results[2])
       let productResult = results[3]
-      // console.log("Amazon Results, baby: \n\n", JSON.parse(results[3]))
+
       readBookList(bookResult)
       readMovieList(movieResult)
       readPlaceList(placeResult)
+      readProductList(productResult)
     })
     // .catch(function (err){
     //   console.log("Error 2:", err)
@@ -52,6 +53,72 @@ $(document).ready(function() {
   });
 
 })
+
+function readProductList(list) {
+  // if (!list.items[0]) {
+  //   return;
+  // }
+  let $searchCardBar = `
+                       <span> Top 2 items from Amazon</span>
+                       `
+  $('.auto-complete').append($searchCardBar)
+  for (let i=0; i<2; i++) {
+    title = list[i.toString()].ItemAttributes[0].Title[0]
+    picture = list[i.toString()].LargeImage[0].URL[0]
+    description = list[i.toString()].DetailPageURL[0]
+    rating = "See Amazon link for rating"
+    if (title.length > 40){
+      shortenedName = title.slice(0,40) + '...'
+      let $searchCard =  `
+                      <div class='auto-complete-item'>
+                        <div class='search-card'>
+                          <img src="${picture}">
+                          <span>${shortenedName}</span>
+                        </div>
+                        <div class="display-box" style="background:url(${picture}) no-repeat; background-size: cover;">
+                          <span>
+                          <div class="display-detail">
+                            <h2>${shortenedName}</h2>
+                            <h4>Category: product</h4>
+                            <h4 style="display:none">Rating: ${rating}</h4>
+                            <h4 style="display:none">Description: ${description}</h4>
+                            <br><br>
+                            <button type="button" class="add-item">Add to List</button>
+                          </div>
+                          </span>
+                        </div>
+                      </div>
+                     `
+      $('.auto-complete').append($searchCard)
+    } else {
+      let $searchCard =  `
+                      <div class='auto-complete-item'>
+                        <div class='search-card'>
+                          <img src="${picture}">
+                          <span> ${title}</span>
+                        </div>
+                        <div class="display-box" style="background:url(${picture}) no-repeat; background-size: cover;">
+                          <span>
+                          <div class="display-detail">
+                            <h2>${title}</h2>
+                            <h4>Category: product</h4>
+                            <h4 style="display:none">Rating: ${rating}</h4>
+                            <h4 style="display:none">Description: ${description}</h4>
+                            <br><br>
+                            <button type="button" class="add-item">Add to List</button>
+                          </div>
+                          </span>
+                        </div>
+                      </div>
+                     `
+      $('.auto-complete').append($searchCard)
+    }
+    // console.log(item.volumeInfo.title)
+    // console.log(item.volumeInfo.imageLinks.smallThumbnail)
+    // console.log(item.volumeInfo.description)
+    // console.log(item.volumeInfo.averageRating)
+  }
+}
 
 function readBookList(list) {
   if (!list.items[0]) {

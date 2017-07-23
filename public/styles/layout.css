@@ -53,3 +53,17 @@ main {
 .box-inner:hover span {
     opacity: 1;
 }
+
+p.product {
+  display:none;
+}
+
+a.movie, a.restaurant, a.book {
+  display:none;
+}
+
+a.product {
+  cursor: pointer;
+  color: white;
+  text-decoration: underline;
+}
