@@ -236,6 +236,7 @@ function deleteItem(item) {
       // $(".container .row").empty();
       // renderItems(itemsObject);
       console.log("POST succesful.")
+      checkUser()
     }
   })
 }

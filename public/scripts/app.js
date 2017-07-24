@@ -237,19 +237,19 @@ $(document).ready(function() {
     event.preventDefault();
     console.log("Remove button clicked")
     let siblings = $(this).siblings()
-    let picture = siblings[3].src
+    // let picture = siblings[3].src
     let name = siblings[0].innerHTML
-    let category = siblings[1].innerHTML.replace("Category: ", "")
-    let rating = siblings[2].innerHTML.replace("Rating: ", "")
-    let description = siblings[4].innerHTML.replace("Description: ", "")
+    let category = siblings[1].innerHTML.replace("Type: ", "")
+    // let rating = siblings[2].innerHTML.replace("Rating: ", "")
+    // let description = siblings[4].innerHTML.replace("Description: ", "")
     let item = {
       name: name,
       category: category,
-      rating: rating,
-      description: description,
-      picture: picture
+      // rating: rating,
+      // description: description,
+      // picture: picture
     }
-    // console.log(item)
+    console.log(item)
     deleteItem(item)
   });
 

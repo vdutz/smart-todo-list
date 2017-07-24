@@ -82,16 +82,93 @@ module.exports = (knex) => {
   });
 
   router.delete("/", (req, res) => {
-    knex('items')
-      .insert({name: req.body.name, category: req.body.category, rating: req.body.rating, description: req.body.description, picture: req.body.picture})
-      .then((results) => {
-        res.json(results);
-      })
-      .catch((err) => {
-        // res.status(404).send(err)
-        res.status(404).send()
-        console.log("Error deleting item from database")
-      })
+    // knex('users_items')
+    // .join('items', 'items.id', '=', 'users_items.item_id')
+    // .where('name', req.body.name)
+    // .andWhere('category', req.body.category)
+    // .del()
+
+      // .insert({name: req.body.name, category: req.body.category, rating: req.body.rating, description: req.body.description, picture: req.body.picture})
+    knex('users_items')
+    .select('*')
+    .where('users_items.item_id', function() {
+      this.select('items.id')
+          .from('items')
+          .where('items.name', req.body.name)
+          .andWhere('items.category', req.body.category)
+    })
+
+    // knex('users_items')
+    // .where('users_items.item_id', function() {
+    //   this.select('items.id')
+    //       .from('items')
+    //       .where('items.name', req.body.name)
+    //       .andWhere('items.category', req.body.category)
+    // })
+    // .del()
+
+    //   req.body.name)
+    // .andWhere('category', req.body.category)
+    // .del()
+
+    .then((results) => {
+      console.log("Results: ", results)
+      console.log("Length: ", results.length)
+      if (results.length > 1) {
+        knex('users_items')
+        .where('users_items.item_id', function() {
+          this.select('items.id')
+              .from('items')
+              .where('items.name', req.body.name)
+              .andWhere('items.category', req.body.category)
+          })
+        .andWhere('users_items.user_id', function() {
+          this.select('users.id')
+              .from('users')
+              .where('users.session_id', req.session.user_id)
+        })
+        .del()
+        .then((results2) => {
+          console.log("Item succesfully deleted from users_items table only")
+          res.status(200).send()
+        })
+      } else {
+        knex('users_items')
+        .where('users_items.item_id', function() {
+          this.select('items.id')
+              .from('items')
+              .where('items.name', req.body.name)
+              .andWhere('items.category', req.body.category)
+          })
+        .andWhere('users_items.user_id', function() {
+          this.select('users.id')
+              .from('users')
+              .where('users.session_id', req.session.user_id)
+        })
+        .del()
+        .then((results3) => {
+          knex('items')
+          .where('name', req.body.name)
+          .andWhere('category', req.body.category)
+          .del()
+          .then((results4) => {
+            console.log("Item succesfully deleted from users_items table AND items table")
+            res.status(200).send()
+          })
+        })
+      }
+
+
+      // res.json(results);
+
+      // console.log("Item succesfully deleted from database")
+      // res.status(200).send()
+    })
+    .catch((err) => {
+      // res.status(404).send(err)
+      res.status(404).send()
+      console.log("Error deleting item from database")
+    })
   })
 
   return router;
