@@ -396,7 +396,7 @@ function renderSearch(item) {
   var $search = `<div class="row">
                   <div class="col-md-10 col-md-offset-1 col-xs-12">
                     <div class="search-container">
-                      <input class="search-bar" placeholder="Search your book">
+                      <input class="search-bar" placeholder="Search for your item">
                       <div class='auto-complete'>
                       </div>
                     </div>
