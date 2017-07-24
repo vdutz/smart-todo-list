@@ -55,28 +55,49 @@ module.exports = (knex) => {
           .then((results3) => {
             console.log("New item - Succesfully inserted new row into users_items table")
           })
-
-          res.json(results2);
         })
         .catch((err) => {
-          res.status(404).send()
+          res.status(405).send()
         })
       } else {
-        let subqueryUser = knex('users').where('session_id', req.session.user_id).select('id');
-        let subqueryItem = knex('items').where('name', req.body.name).andWhere('rating', req.body.rating).select('id')
-        knex('users_items')
-        .insert({user_id: subqueryUser, item_id: subqueryItem, complete_status: "todo"})
-        .then((results3) => {
-          console.log("Existing item - Succesfully inserted new row into users_items table")
-        })
-        res.status(200).send();
-      }
+          knex.select('*')
+          .from('users_items')
+          .where('item_id',function() {
+            this.select('id')
+                .from('items')
+                .where('name', req.body.name)
+                .andWhere('category', req.body.category)
+          })
+          .andWhere('user_id', function() {
+            this.select(id)
+                .from('users')
+                .where('session_id', req.session.user_id)
+          })
+          .then((results3) => {
+            if (results3.length === 0){
+              let subqueryUser = knex('users').where('session_id', req.session.user_id).select('id');
+              let subqueryItem = knex('items').where('name', req.body.name).andWhere('rating', req.body.rating).select('id')
+              knex('users_items')
+              .insert({user_id: subqueryUser, item_id: subqueryItem, complete_status: "todo"})
+              .then((results4) => {
+                console.log("Existing it")
+                res.status(200).send();
+              })
+            } else {
+              console.log('Record already exists')
+              res.status(400).send();
+            }
+          })
+          .catch((err) => {
+            res.status(400).send()
+          })
+        }
     })
     .catch((err) => {
       res.status(400).send()
     })
+  })
 
-  });
 
   router.delete("/", (req, res) => {
     knex('users_items')
