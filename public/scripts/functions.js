@@ -1,25 +1,20 @@
-function generateRandomString() {
-  var myArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "G", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  var myString = "";
-  for (var i = 0; i < 6; i++) {
-    myString += myArray[Math.floor(Math.random() * myArray.length)];
-  }
-  return myString;
-}
 
 function createItemElement(itemdata) {
   const { name, category, rating, description, picture, complete_status } = itemdata;
-  description2 = description.slice(0,250);
+  const description2 = description.slice(0,250);
+
+  let completeHide
+  let todoHide
 
   if (complete_status === "complete") {
-    var completeHide = ""
-    var todoHide = " hide"
+    completeHide = ""
+    todoHide = " hide"
   } else {
-    var completeHide = " hide"
-    var todoHide = ""
+    completeHide = " hide"
+    todoHide = ""
   }
 
-  itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4 ${category} ${complete_status}">
+  const itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4 ${category} ${complete_status}">
                   <div class="box-inner" style="background:url(${picture}) no-repeat; background-size: cover; background-position: center;)">
                     <span>
                       <div class="item-element-detail">
@@ -36,20 +31,21 @@ function createItemElement(itemdata) {
                   </div>
                 </div>`
 
-  $item = $(itemString)
+  const $item = $(itemString)
   return $item
 
 }
 
+// Renders the items that the user has added to their list
 function renderItems(items) {
   items.forEach(function(item){
     createItemElement(item).appendTo($(".container .row"));
   })
 }
 
-// Load filters
+// Loads list filters
 function loadFilters() {
-  var $filtersBar = `<div class="box-outer col-xs-12 col-sm-12 col-md-12">
+  const $filtersBar = `<div class="box-outer col-xs-12 col-sm-12 col-md-12">
                       <div class="filter-inner">
                         <button class="filter-button book">
                           Books
@@ -78,10 +74,10 @@ function loadFilters() {
 }
 
 
-// Load nav bar
+// Loads the nav bar
 function loadNavBar(response) {
   const {username} = response['0'];
-  var $navBar = `<nav id="nav-bar">
+  const $navBar = `<nav id="nav-bar">
                   <span class="header">SmarToDo</span>
                   <img class="logo" src="images/todolist.png">
                   <span class="header">Hello, ${username}! </span>
@@ -101,7 +97,7 @@ function loadNavBar(response) {
                   </span>
                 </nav>`
   $('body').empty().append($navBar);
-  var $container = `<main class="container">
+  const $container = `<main class="container">
                       <div class="row">
 
                       </div>
@@ -109,9 +105,9 @@ function loadNavBar(response) {
   $('body').append($container);
 }
 
-////Replace the entire container and append with register page////
+// Empties the entire container and appends the register page to it
 function renderRegister() {
-  var $registerPage = `<main class='container'>
+  const $registerPage = `<main class='container'>
                         <div class="row">
                           <div class="col-md-4 col-md-offset-4 col-xs-12">
                             <div class="register-box">
@@ -130,10 +126,10 @@ function renderRegister() {
   $('body').empty().append($registerPage);
 }
 
-/////Replace the entire container and append with profile page///
+// Empties the entire container and appends the profile page to it
 function renderProfile(response) {
   const { username, email } = response[0];
-  var $profilePage = `<main class='container'>
+  const $profilePage = `<main class='container'>
                         <div class="row">
                           <div class="col-md-4 col-md-offset-4 col-xs-12">
                             <div class="profile-box">
@@ -148,9 +144,9 @@ function renderProfile(response) {
                       </main>`;
   $('body').empty().append($profilePage);
 }
-/////page to edit user profile////
+// Renders the page to allow users to edit their profile
 function renderProfileEdit() {
-  var $profileForm = `<h2 style="color:white;">Edit User Profile</h2>
+  const $profileForm = `<h2 style="color:white;">Edit User Profile</h2>
                       <img  class="logo-page" src="images/todolist.png""><br><br>
                       <form class="profile-list-edit">
                         <input type="text" name="username" placeholder="New username" /><br><br>
@@ -161,9 +157,9 @@ function renderProfileEdit() {
   $('.profile-box').empty().append($profileForm);
 }
 
-/////// replace the whole container and append with login page
+// Empties the whole container and appends the login page to it
 function renderLogin() {
-  var $loginPage = `<main class='container'>
+  const $loginPage = `<main class='container'>
                       <div class="row">
                         <div class="col-md-4 col-md-offset-4 col-xs-12">
                           <div class="login-box">
@@ -181,113 +177,104 @@ function renderLogin() {
   $('body').empty().append($loginPage);
 }
 
-/////replace the whole container and append with a form to test adding data
-function renderAddItemForm() {
-  var $formPage = `<main class='container'>
-                      <div class="row">
-                        <div class="col-md-8 col-md-offset-2 col-xs-12">
-                          <div class="login-box">
-                            <img src="images/todolist.png"">
-                            <form class="add-item-form">
-                              <input type="text" name="name" placeholder="Name" /><br><br>
-                              <input type="text" name="category" placeholder="Category" /><br><br>
-                              <input type="text" name="rating" placeholder="Rating" /><br><br>
-                              <input type="text" name="description" placeholder="Description" /><br><br>
-                              <input type="text" name="picture" placeholder="Picture" /><br><br>
-                              <input type="submit" class="add-item-submit" value="Add Item" />
-                            </form><br>
-                          </div>
-                        </div>
-                      </div>
-                    </main>`;
-  $('body').empty().append($formPage);
-}
+// Empties the whole container and appends with a form to test adding data
+// function renderAddItemForm() {
+//   var $formPage = `<main class='container'>
+//                       <div class="row">
+//                         <div class="col-md-8 col-md-offset-2 col-xs-12">
+//                           <div class="login-box">
+//                             <img src="images/todolist.png"">
+//                             <form class="add-item-form">
+//                               <input type="text" name="name" placeholder="Name" /><br><br>
+//                               <input type="text" name="category" placeholder="Category" /><br><br>
+//                               <input type="text" name="rating" placeholder="Rating" /><br><br>
+//                               <input type="text" name="description" placeholder="Description" /><br><br>
+//                               <input type="text" name="picture" placeholder="Picture" /><br><br>
+//                               <input type="submit" class="add-item-submit" value="Add Item" />
+//                             </form><br>
+//                           </div>
+//                         </div>
+//                       </div>
+//                     </main>`;
+//   $('body').empty().append($formPage);
+// }
 
+// Loads all of a user's items
 function loadList(){
   $.ajax({
     url: '/api/items',
     method: 'GET',
     success: function(itemsObject) {
-      // $(".container .row").empty();
       loadFilters()
       renderItems(itemsObject);
     }
   })
 }
 
+// Toggles the status of an item from "complete" to "to do" or vice versa
 function changeStatus(statusObject){
   $.ajax({
     url: '/api/items',
     method: 'PUT',
     data: statusObject,
     success: function(itemsObject) {
-      // $(".container .row").empty();
-      // loadFilters()
-      // renderItems(itemsObject);
-      console.log("SUCCESS!!!!")
       checkUser()
     }
   })
 }
 
-function addItem(item) {
-  $.ajax({
-    url: '/api/items',
-    method: 'POST',
-    data: item.serialize(),
-    success: function(itemsObject) {
-      // $(".container .row").empty();
-      // renderItems(itemsObject);
-      console.log("POST succesful.")
-    }
-  })
-}
+// Adds an item to a user's list
+// function addItem(item) {
+//   $.ajax({
+//     url: '/api/items',
+//     method: 'POST',
+//     data: item.serialize(),
+//     success: function(itemsObject) {
+//       console.log("POST succesful.")
+//     }
+//   })
+// }
 
+// Adds an item to a user's list
 function addItemfromButton(item) {
   $.ajax({
     url: '/api/items',
     method: 'POST',
     data: item,
     success: function(itemsObject) {
-      // $(".container .row").empty();
-      // renderItems(itemsObject);
       console.log("POST succesful.")
     }
   })
 }
 
+// Removes an item from a user's list
 function deleteItem(item) {
   $.ajax({
     url: '/api/items',
     method: 'DELETE',
     data: item,
     success: function(itemsObject) {
-      // $(".container .row").empty();
-      // renderItems(itemsObject);
-      console.log("POST succesful.")
       checkUser()
     }
   })
 }
 
-
+// Checks whether use is logged in.  If logged in, it renders that user's item list.  If not logged in, it renders the login page.
 function checkUser() {
   $.ajax({
     url: '/api/checkuser',
     method: 'GET',
     success: function(response) {
-      console.log("Match found. User is logged in.", response)
       loadNavBar(response);
-      // renderItems(itemsObject);
       loadList()
     },
     error: function (err) {
-      console.log("No entry found.  User is not logged in.")
       renderLogin();
     }
   })
 }
 
+// Registers a new user with the form information provided.
 function userRegister(user) {
   console.log(user)
   $.ajax({
@@ -295,103 +282,73 @@ function userRegister(user) {
     method: 'POST',
     data: user.serialize(),
     success: function(response) {
-      console.log("Registration succesful!")
-      console.log("Respone: ", response)
       checkUser()
-      // loadFilters()
     },
     error: function(err) {
-      alert("This email has been used")
+      alert("This email has already been taken.")
     }
   })
 }
 
+// Logs a user in
 function userLogin(user) {
   $.ajax({
     url: '/api/login',
     method: 'POST',
     data: user.serialize(),
     success: function(response) {
-      // $(".container .row").empty();
-      // renderItems(itemsObject);
-      console.log("Login succesful!")
       checkUser()
-      // loadList()
     },
     error: function(err) {
-      alert("Incorrect email or password")
+      alert("Incorrect email or password.")
     }
   })
 }
 
+// Checks user's information to render their profile page.
 function checkUserProfile() {
   $.ajax({
     url: '/api/profile',
     method: 'GET',
     success: function(response) {
-      console.log("Match found. User is logged in.", response[0])
       renderProfile(response);
     },
     error: function (err) {
-      console.log("No entry found.  User is not logged in.")
+      console.log("Error.")
     }
   })
 }
 
+// Edits the user's information in the database with the form information provided.
 function userEditProfile(user) {
   $.ajax({
     url: '/api/profile',
     method: 'POST',
     data: user.serialize(),
     success: function(response) {
-      // $(".container .row").empty();
-      // renderItems(itemsObject);
-      console.log("Login succesful!")
       checkUser()
     },
     error: function(err) {
-      console.log("Incorrect email or password")
+      console.log("Incorrect email or password.")
     }
   })
 }
 
+// Logs user out
 function userLogout() {
   $.ajax({
     url: '/api/login',
     method: 'DELETE',
     success: function(response) {
-      // $(".container .row").empty();
-      // renderItems(itemsObject);
-      console.log("Logout succesful!")
+      console.log("Logout succesful.")
     },
     error: function(err) {
-      console.log("Unable to logout")
+      console.log("Unable to logout".)
     }
   })
 }
 
-// function displayItem(item) {
-//   let { name, category, rating, description, picture } = item
-
-//   let $bigItem = `<main class='container'>
-//                       <div class="row">
-//                         <div class="col-md-8 col-md-offset-2 col-xs-12">
-//                           <div class="display-box">
-//                             <img src="${picture}">
-//                             <div>
-//                               <h2>${name}</h2>
-//                               <h4>Category: ${category}</h4>
-//                               <h4>Rating: ${rating}</h4>
-//                               <h4>Description: ${description}</h4>
-//                               <button type="button" class="add-item">Add to List</button>
-//                             </div>
-//                           </div>
-//                         </div>
-//                       </div>
-//                     </main>`;
-//   $('body').empty().append($bigItem);
-// }
-
+// Renders the search bar
 function renderSearch(item) {
   var $search = `<div class="row">
                   <div class="col-md-10 col-md-offset-1 col-xs-12">

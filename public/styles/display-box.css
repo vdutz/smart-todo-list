@@ -8,7 +8,6 @@
   background-size:contain;
 }
 
-
 .display-detail {
   display: none;
   height:600px;
@@ -43,5 +42,3 @@
 .display-box:hover span {
     opacity: 1;
 }
-
-.

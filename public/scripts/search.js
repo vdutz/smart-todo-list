@@ -5,11 +5,7 @@ $(document).ready(function() {
       $('.auto-complete').empty()
   }
     requestName = $(this).val().replace(' ', '+')
-    // var requestBook = 'https://www.googleapis.com/books/v1/volumes?q=' + requestName
-    // var requestPlace = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${requestName}&key=AIzaSyBzJXtH_RQSozV9UcLOwRnXycS3ktiesjQ&location=43.6532,-79.3832&radius=2000`
-    // var requestPlace = `https://api.yelp.com/v3/businesses/search?term=${requestName}&latitude=43.6532&longitude=-79.3832&radius=8000`
-    // var requestMovie = 'https://api.themoviedb.org/3/search/movie?api_key=6b9040e6b69a988ffe21732fb57c373f&query=' + requestName
-    // var requestProduct = ''
+
     $.ajax({
       method: 'GET',
       url: '/api/search',
@@ -17,25 +13,7 @@ $(document).ready(function() {
         searchTerms: requestName
       }
     })
-    // Promise.all([
-    //   $.ajax({
-    //     url: requestBook,
-    //     method: 'GET',
-    //   }),
-    //   $.ajax({
-    //     url: requestMovie,
-    //     method: 'GET',
-    //   }),
-    //   $.ajax({
-    //     url: requestPlace,
-    //     method: 'GET',
-    //     dataType: 'jsonp',
-    //     // cache: true,
-    //     beforeSend: function(request) {
-    //       request.setRequestHeader("Authorization", authorizationToken)
-    //     }
-    //   })
-    // ])
+
     .done(function (results){
       let bookResult = JSON.parse(results[0])
       let movieResult = JSON.parse(results[1])
@@ -47,17 +25,15 @@ $(document).ready(function() {
       readPlaceList(placeResult)
       readProductList(productResult)
     })
-    // .catch(function (err){
-    //   console.log("Error 2:", err)
-    // })
+
   });
 
 })
 
+
+// Renders top 2 product search results from Amazon API request
 function readProductList(list) {
-  // if (!list.items[0]) {
-  //   return;
-  // }
+
   let $searchCardBar = `
                        <div style="background-color:#EEDAC1">
                         <span> Top 2 items from Amazon</span>
@@ -115,13 +91,10 @@ function readProductList(list) {
                      `
       $('.auto-complete').append($searchCard)
     }
-    // console.log(item.volumeInfo.title)
-    // console.log(item.volumeInfo.imageLinks.smallThumbnail)
-    // console.log(item.volumeInfo.description)
-    // console.log(item.volumeInfo.averageRating)
   }
 }
 
+// Renders top 2 book search results from Google Books API request
 function readBookList(list) {
   if (!list.items[0]) {
     return;
@@ -223,13 +196,10 @@ function readBookList(list) {
         $('.auto-complete').append($searchCard)
       }
     }
-    // console.log(item.volumeInfo.title)
-    // console.log(item.volumeInfo.imageLinks.smallThumbnail)
-    // console.log(item.volumeInfo.description)
-    // console.log(item.volumeInfo.averageRating)
   }
 }
 
+// Renders top 2 movie search results from The Movie Database API request
 function readMovieList(list){
   if (!list.results[0]) {
     return;
@@ -285,13 +255,10 @@ function readMovieList(list){
                        `
     $('.auto-complete').append($searchCard)
     }
-    // console.log(list.results[i].poster_path)
-    // console.log(list.results[i].vote_average)
-    // console.log(list.results[i].overview)
-    // console.log(list.results[i].title)
   }
 }
 
+// Renders top 2 restaurant search results from Yelp API request
 function readPlaceList(list) {
   if (!list.businesses[0]) {
     return;
@@ -344,9 +311,6 @@ function readPlaceList(list) {
                         </div>
                        `
       $('.auto-complete').append($searchCard)
-    // console.log(list.businesses[i].image_URL)
-    // console.log(list.businesses[i].rating)
-    // console.log(list.businesses[i].name)
     }
   }
 }
