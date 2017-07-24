@@ -28,14 +28,14 @@ module.exports = (knex) => {
     // .select('*')
     // .join('users', 'users_items.user_id', '=', 'users.id')
     // .join('items', 'items.id', '=', 'users_items.item_id')
-    .update('users_items.complete_status', req.body.newStatus)
-    .whereIn('users_items.user_id', function() {
-      this.select('users.id')
+    .update('complete_status', req.body.newStatus)
+    .where('user_id', function() {
+      this.select('id')
           .from('users')
           .where('users.session_id', req.session.user_id)
     })
-    .whereIn('users_items.item_id', function() {
-      this.select('items.id')
+    .andWhere('item_id', function() {
+      this.select('id')
           .from('items')
           .where('items.name', req.body.newName)
     })

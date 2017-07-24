@@ -199,15 +199,17 @@ $(document).ready(function() {
   });
 
   $("body").on('click', 'i.complete', function(event){
-    $('i.complete').addClass('hide')
-    $('i.todo').removeClass('hide')
+    $(this).addClass('hide')
+    // console.log("Siblings of this: ", $(this).siblings())
+    $($(this).siblings()[8]).removeClass('hide')
     name = $(this).siblings()[0].innerHTML
     changeStatus({newStatus: "todo", newName: name})
   });
 
    $("body").on('click', 'i.todo', function(event){
-    $('i.todo').addClass('hide')
-    $('i.complete').removeClass('hide')
+    $(this).addClass('hide')
+    // console.log("Siblings of this: ", $(this).siblings())
+    $($(this).siblings()[8]).removeClass('hide')
     name = $(this).siblings()[0].innerHTML
     changeStatus({newStatus: "complete", newName: name})
   });

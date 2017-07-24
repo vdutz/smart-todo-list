@@ -20,7 +20,7 @@ function createItemElement(itemdata) {
   }
 
   itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4 ${category} ${complete_status}">
-                  <div class="box-inner" style="background:url(${picture}) no-repeat; background-size: cover;)">
+                  <div class="box-inner" style="background:url(${picture}) no-repeat; background-size: cover; background-position: center;)">
                     <span>
                       <div class="item-element-detail">
                         <h4>${name}</h4>
@@ -82,8 +82,8 @@ function loadFilters() {
 function loadNavBar(response) {
   const {username} = response['0'];
   var $navBar = `<nav id="nav-bar">
-                  <img class="logo" src="images/todolist.png">
                   <span class="header">SmarToDo Hello ${username}!</span>
+                  <img class="logo" src="images/todolist.png">
                   <span class="nav-button nav-list">
                     <i class="fa fa-list-ol" aria-hidden="true"></i>
                     My List
@@ -226,6 +226,7 @@ function changeStatus(statusObject){
       // loadFilters()
       // renderItems(itemsObject);
       console.log("SUCCESS!!!!")
+      checkUser()
     }
   })
 }

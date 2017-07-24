@@ -59,7 +59,9 @@ function readProductList(list) {
   //   return;
   // }
   let $searchCardBar = `
-                       <span> Top 2 items from Amazon</span>
+                       <div style="background-color:gray">
+                        <span> Top 2 items from Amazon</span>
+                       </div>
                        `
   $('.auto-complete').append($searchCardBar)
   for (let i=0; i<2; i++) {
@@ -125,8 +127,9 @@ function readBookList(list) {
     return;
   }
   $('.auto-complete').empty()
-  let $searchCardBar = `
-                       <span> Top 2 items from Google Books</span>
+  let $searchCardBar = `<div style="background-color:gray">
+                        <span> Top 2 items from Google Books</span>
+                       </div>
                        `
   $('.auto-complete').append($searchCardBar)
   for (let i=0; i<2; i++) {
@@ -231,8 +234,9 @@ function readMovieList(list){
   if (!list.results[0]) {
     return;
   }
-  let $searchCardBar = `
-                       <span> Top 2 items from TMDB</span>
+  let $searchCardBar = `<div style="background-color:gray">
+                        <span> Top 2 items from TMDB</span>
+                       </div>
                        `
   $('.auto-complete').append($searchCardBar)
   for (let i=0; i<2; i++) {
@@ -292,8 +296,9 @@ function readPlaceList(list) {
   if (!list.businesses[0]) {
     return;
   }
-  let $searchCardBar = `
-                       <span> Top 2 items from Yelp</span>
+  let $searchCardBar = `<div style="background-color:gray">
+                        <span> Top 2 items from Yelp</span>
+                        </div>
                        `
   $('.auto-complete').append($searchCardBar)
   for (let i=0; i<2; i++) {
