@@ -5,28 +5,28 @@ This web application helps visitors create a list of to-do items in four categor
 ## Final Product
 
 ### Registration Page
-!["Registration Page"]()
+!["Registration Page"](https://github.com/vdutz/smart-todo-list/blob/master/docs/registration-page.png?raw=true)
 
 ### Item List Page
-!["Item List Page"]()
+!["Item List Page"](https://github.com/vdutz/smart-todo-list/blob/master/docs/list-page.png?raw=true)
 
 ### Item List Page with Hover
-!["My List with Hover"]()
+!["My List with Hover"](https://github.com/vdutz/smart-todo-list/blob/master/docs/list-page-hover.png?raw=true)
 
 ### Search Page
-!["Search Page"]()
+!["Search Page"](https://github.com/vdutz/smart-todo-list/blob/master/docs/search-page.png?raw=true)
 
-### Search Page Lower Half
-!["Search Page Lower Half"]()
+### Search Page (2)
+!["Search Page (2)"](https://github.com/vdutz/smart-todo-list/blob/master/docs/search-page2.png?raw=true)
 
 ### Search Item Zoom
-!["Search Item Zoom"]()
+!["Search Item Zoom"](https://github.com/vdutz/smart-todo-list/blob/master/docs/search-item-zoom.png?raw=true)
 
 ### Search Item Zoom with Hover
-!["Search Item Zoom with Hover"]()
+!["Search Item Zoom with Hover"](https://github.com/vdutz/smart-todo-list/blob/master/docs/search-item-zoom-hover.png?raw=true)
 
 ### Edit Profile Page
-!["Edit Profile Page"]()
+!["Edit Profile Page"](https://github.com/vdutz/smart-todo-list/blob/master/docs/edit-profile-page.png?raw=true)
 
 
 ## Dependencies
