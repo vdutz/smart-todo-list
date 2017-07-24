@@ -1,0 +1,18 @@
+$back-color: #3D3D3D;
+$border-color: #EEDAC1;
+$nav-color: #CCCBC6;
+
+.filter-button {
+  margin: 1%;
+  background-color: $border-color;
+  border-radius: 5px;
+  border: 1px solid $border-color;
+}
+
+.filter-inner {
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}

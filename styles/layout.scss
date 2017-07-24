@@ -1,7 +1,75 @@
-body {
-  background-color: #EEE;
+$back-color: #3D3D3D;
+$border-color: #EEDAC1;
+$nav-color: #CCCBC6;
 
-  h1 {
-    color: #244751;
-  }
+body {
+  background-color: $back-color;
+  font-family: 'Maven Pro', sans-serif;
+}
+
+main {
+  padding-top: 10px;
+  padding-right: 4%;
+  padding-left: 4%;
+  margin-top: 80px;
+}
+
+.box-outer {
+  padding: 20px;
+}
+
+.box-inner {
+  border-radius: 10px;
+  height:360px;
+  width:335px;
+}
+
+.box-inner .remove-item {
+  margin-right: 100px;
+  cursor: pointer;
+}
+
+.box-inner .mark-completed {
+  margin-left: 5px;
+  border: 2px solid white;
+  background-color: transparent;
+}
+
+.item-element-detail {
+  padding:30px 20px;
+  display: none;
+}
+
+.box-inner:hover .item-element-detail {
+  display: block;
+  color: white;
+}
+
+.box-inner span {
+    display: block;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    background: rgba(61,61,61,.85);
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+}
+
+.box-inner:hover span {
+    opacity: 1;
+}
+
+p.product {
+  display:none;
+}
+
+a.movie, a.restaurant, a.book {
+  display:none;
+}
+
+a.product {
+  cursor: pointer;
+  color: white;
+  text-decoration: underline;
 }

@@ -16,8 +16,8 @@ main {
 
 .box-inner {
   border-radius: 10px;
-  height:360px;
-  width:335px;
+  height: 360px;
+  width: 335px;
 }
 
 .box-inner .remove-item {
@@ -32,7 +32,7 @@ main {
 }
 
 .item-element-detail {
-  padding:30px 20px;
+  padding: 30px 20px;
   display: none;
 }
 
@@ -42,26 +42,26 @@ main {
 }
 
 .box-inner span {
-    display: block;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    background: rgba(61,61,61,.85);
-    -moz-transition: all 1s;
-    -webkit-transition: all 1s;
-    transition: all 1s;
+  display: block;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background: rgba(61, 61, 61, 0.85);
+  -moz-transition: all 1s;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 .box-inner:hover span {
-    opacity: 1;
+  opacity: 1;
 }
 
 p.product {
-  display:none;
+  display: none;
 }
 
 a.movie, a.restaurant, a.book {
-  display:none;
+  display: none;
 }
 
 a.product {
