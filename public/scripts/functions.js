@@ -9,7 +9,7 @@ function generateRandomString() {
 
 function createItemElement(itemdata) {
   const { name, category, rating, description, picture, complete_status } = itemdata;
-
+  description2 = description.slice(0,250);
   itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4 ${category} ${complete_status}">
                   <div class="box-inner" style="background:url(${picture}) no-repeat; background-size: cover;)">
                     <span>
@@ -17,7 +17,7 @@ function createItemElement(itemdata) {
                         <h4>${name}</h4>
                         <p>Type: ${category}</p>
                         <p class='${category}'>Rating: ${rating}</p>
-                        <p class='${category}'>${description}</p>
+                        <p class='${category}'>${description2}...</p>
                         <a href='${description}' class='${category}'>Click here for Amazon product link</a><br><br>
                         <button type=button class="remove-item">Remove from List</button>
                       </div>
@@ -287,11 +287,6 @@ function userLogin(user) {
       // renderItems(itemsObject);
       console.log("Login succesful!")
       checkUser()
-      console.log('wait')
-      console.log('wait')
-      console.log('wait')
-      console.log('wait')
-      console.log('wait')
       // loadList()
     },
     error: function(err) {
