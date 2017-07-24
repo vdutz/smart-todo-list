@@ -25,6 +25,14 @@ main {
 }
 
 .box-inner .remove-item {
+  /*border: 2px solid white;
+  background-color: transparent;*/
+  margin-right: 100px;
+  cursor: pointer;
+}
+
+.box-inner .mark-completed {
+  margin-left: 5px;
   border: 2px solid white;
   background-color: transparent;
 }

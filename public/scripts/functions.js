@@ -10,6 +10,15 @@ function generateRandomString() {
 function createItemElement(itemdata) {
   const { name, category, rating, description, picture, complete_status } = itemdata;
   description2 = description.slice(0,250);
+
+  if (complete_status === "complete") {
+    var completeHide = ""
+    var todoHide = " hide"
+  } else {
+    var completeHide = " hide"
+    var todoHide = ""
+  }
+
   itemString = `<div class="box-outer col-xs-12 col-sm-6 col-md-4 ${category} ${complete_status}">
                   <div class="box-inner" style="background:url(${picture}) no-repeat; background-size: cover;)">
                     <span>
@@ -19,7 +28,9 @@ function createItemElement(itemdata) {
                         <p class='${category}'>Rating: ${rating}</p>
                         <p class='${category}'>${description2}...</p>
                         <a href='${description}' class='${category}'>Click here for Amazon product link</a><br><br>
-                        <button type=button class="remove-item">Remove from List</button>
+                        <i class="fa fa-trash-o remove-item fa-lg" aria-hidden="true"></i>
+                        <i class="fa fa-square-o todo ${todoHide} fa-lg" aria-hidden="true">&nbsp;&nbsp; -  To do</i>
+                        <i class="fa fa-check-square-o complete ${completeHide} fa-lg" aria-hidden="true">&nbsp;&nbsp; -  Complete</i>
                       </div>
                     </span>
                   </div>
@@ -27,6 +38,7 @@ function createItemElement(itemdata) {
 
   $item = $(itemString)
   return $item
+
 }
 
 function renderItems(items) {
@@ -47,6 +59,9 @@ function loadFilters() {
                         </button>
                         <button class="filter-button restaurant">
                           Restaurants
+                        </button>
+                        <button class="filter-button product">
+                          Products
                         </button>
                         <button class="filter-button all">
                           All
@@ -197,6 +212,20 @@ function loadList(){
       // $(".container .row").empty();
       loadFilters()
       renderItems(itemsObject);
+    }
+  })
+}
+
+function changeStatus(statusObject){
+  $.ajax({
+    url: '/api/items',
+    method: 'PUT',
+    data: statusObject,
+    success: function(itemsObject) {
+      // $(".container .row").empty();
+      // loadFilters()
+      // renderItems(itemsObject);
+      console.log("SUCCESS!!!!")
     }
   })
 }

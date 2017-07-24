@@ -154,24 +154,35 @@ $(document).ready(function() {
     $('.box-outer.book').removeClass('hide')
     $('.box-outer.movie').addClass('hide')
     $('.box-outer.restaurant').addClass('hide')
+    $('.box-outer.product').addClass('hide')
   });
 
   $("body").on('click', '.filter-button.movie', function(event){
     $('.box-outer.movie').removeClass('hide')
     $('.box-outer.book').addClass('hide')
     $('.box-outer.restaurant').addClass('hide')
+    $('.box-outer.product').addClass('hide')
   });
 
   $("body").on('click', '.filter-button.restaurant', function(event){
     $('.box-outer.restaurant').removeClass('hide')
     $('.box-outer.book').addClass('hide')
     $('.box-outer.movie').addClass('hide')
+    $('.box-outer.product').addClass('hide')
+  });
+
+  $("body").on('click', '.filter-button.product', function(event){
+    $('.box-outer.product').removeClass('hide')
+    $('.box-outer.book').addClass('hide')
+    $('.box-outer.movie').addClass('hide')
+    $('.box-outer.restaurant').addClass('hide')
   });
 
   $("body").on('click', '.filter-button.all', function(event){
     $('.box-outer.restaurant').removeClass('hide')
     $('.box-outer.book').removeClass('hide')
     $('.box-outer.movie').removeClass('hide')
+    $('.box-outer.product').removeClass('hide')
     $('.box-outer.todo').removeClass('hide')
     $('.box-outer.complete').removeClass('hide')
 
@@ -185,6 +196,20 @@ $(document).ready(function() {
   $("body").on('click', '.filter-button.todo', function(event){
     $('.box-outer.todo').removeClass('hide')
     $('.box-outer.complete').addClass('hide')
+  });
+
+  $("body").on('click', 'i.complete', function(event){
+    $('i.complete').addClass('hide')
+    $('i.todo').removeClass('hide')
+    name = $(this).siblings()[0].innerHTML
+    changeStatus({newStatus: "todo", newName: name})
+  });
+
+   $("body").on('click', 'i.todo', function(event){
+    $('i.todo').addClass('hide')
+    $('i.complete').removeClass('hide')
+    name = $(this).siblings()[0].innerHTML
+    changeStatus({newStatus: "complete", newName: name})
   });
 
   $("body").on('submit', '.register-form', function(event){

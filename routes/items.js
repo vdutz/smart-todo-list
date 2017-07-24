@@ -3,9 +3,9 @@
 const express = require('express');
 const router  = express.Router();
 
-function AddUserItem() {
+// function AddUserItem() {
 
-}
+// }
 
 module.exports = (knex) => {
 
@@ -20,6 +20,55 @@ module.exports = (knex) => {
       res.json(results);
     });
   });
+
+  router.put("/", (req, res) => {
+    console.log("Req.body.newStatus: ", req.body.newStatus)
+    console.log("Req.body.newName: ", req.body.newName)
+    knex('users_items')
+    // .select('*')
+    // .join('users', 'users_items.user_id', '=', 'users.id')
+    // .join('items', 'items.id', '=', 'users_items.item_id')
+    .update('users_items.complete_status', req.body.newStatus)
+    .whereIn('users_items.user_id', function() {
+      this.select('users.id')
+          .from('users')
+          .where('users.session_id', req.session.user_id)
+    })
+    .whereIn('users_items.item_id', function() {
+      this.select('items.id')
+          .from('items')
+          .where('items.name', req.body.newName)
+    })
+    .then((results) => {
+      console.log("Results: ", results)
+      console.log("Succesfully updated status")
+      res.status(200).send();
+    })
+
+
+    //   req.session.user_id)
+    // .andWhere('items.name', req.body.newName)
+    // .update('users_items.complete_status', req.body.newStatus)
+    // .toString())
+    // .then((results) => {
+    //   // console.log(results)
+    //   console.log("Succesfully changed status.")
+    //   res.status(200).send()
+    //   // if (results.length == 1) {
+    //   //   console.log("Results: ", results)
+    //   //   console.log("Succesfully changed status.")
+    //   //   res.status(200).send()
+    //   // } else {
+    //   //   console.log("Could not change status.")
+    //   //   res.status(404).send()
+    //   // }
+    // })
+    .catch((err) => {
+      console.log(err)
+      console.log("Could not change status (2).")
+      res.status(400).send()
+    })
+  })
 
   router.post("/", (req, res) => {
     console.log("Req.body.name: ", req.body.name)
