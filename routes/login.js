@@ -17,20 +17,13 @@ module.exports = (knex) => {
 
   router.post("/", (req, res) => {
     let user_id = generateRandomString()
-    console.log("user_id: ", user_id)
     req.session.user_id = user_id
-    console.log("req.body.email: ", req.body.email)
     knex
     .select("password")
     .from('users')
     .where('email', req.body.email)
-    // .andWhere('password', req.body.password)
     .then((results) => {
-      console.log("Results: ", results)
-      console.
-      compare
       if (bcrypt.compareSync(req.body.password, results[0].password)) {
-        // console.log("Results: ", results)
         knex('users')
         .where('email', req.body.email)
         .update('session_id', user_id)
@@ -42,28 +35,14 @@ module.exports = (knex) => {
             console.log("Update session_id failed.")
             res.status(404).send()
           }
-
         })
       } else {
-        console.log("Could not find email/password match.")
         res.status(404).send()
-      // if (results.length === 0) {
-      //   console.log("Could not find email/password match.")
-      //   res.status(404).send()
-      // } else {
-
-        // .catch((err) => {
-        //   console.log("Update session_id failed.")
-        //   res.status(404).send(err)
-        // })
       }
-
-      // res.status(200).send(results);
     })
     .catch((err) => {
       console.log("Check search failed.")
     })
-
   });
 
   router.delete("/", (req, res) => {
@@ -73,11 +52,9 @@ module.exports = (knex) => {
     .where('session_id', token)
     .update({session_id: ''})
     .then((results) => {
-      console.log("Logout results: ", results)
       res.status(200).send();
     })
     .catch((err) => {
-      console.log("Could not logout.")
       res.status(404).send()
     })
   })

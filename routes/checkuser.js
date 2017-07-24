@@ -16,13 +16,6 @@ module.exports = (knex) => {
     .catch((err) => {
         res.status(400).send()
     })
-
-    // knex
-    //   .select("*")
-    //   .from("items")
-    //   .then((results) => {
-    //     res.json(results);
-    // });
   });
 
   return router;

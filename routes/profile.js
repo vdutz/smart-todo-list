@@ -14,7 +14,6 @@ module.exports = (knex) => {
       res.json(results);
     })
     .catch((err) => {
-        console.log("Can't get user profile.")
         res.status(404).send()
       })
   });
@@ -28,7 +27,6 @@ module.exports = (knex) => {
         res.json(results);
       })
       .catch((err) => {
-        console.log("Can't update username and password")
         res.status(404).send()
       })
   });
