@@ -343,7 +343,7 @@ function userLogout() {
       console.log("Logout succesful.")
     },
     error: function(err) {
-      console.log("Unable to logout".)
+      console.log("Unable to logout.")
     }
   })
 }
