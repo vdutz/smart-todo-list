@@ -6,7 +6,7 @@
 }
 
 .search-bar{
-  border: 2px solid #8FD529;
+  border: 2px solid #EEDAC1;
   border-radius: 2px;
 }
 .search-container input{
@@ -18,8 +18,9 @@
   width: 75%;
   border-radius: 5px;
   margin:auto;
-  background-color: #5FBDBD;
-  border: 2px solid #8FD529;
+  background-color: #CCCBC6;
+  border-right: 2px solid #EEDAC1;
+  border-left: 2px solid #EEDAC1;
 }
 
 .auto-complete-item {
@@ -38,7 +39,7 @@
   height: 100%;
   width: 100px;
   border-radius: 5px;
-  border: 1px solid #8FD529;
+  border: 1px solid #EEDAC1;
 }
 
 .search-card span{

@@ -59,7 +59,7 @@ function readProductList(list) {
   //   return;
   // }
   let $searchCardBar = `
-                       <div style="background-color:gray">
+                       <div style="background-color:#EEDAC1">
                         <span> Top 2 items from Amazon</span>
                        </div>
                        `
@@ -127,7 +127,7 @@ function readBookList(list) {
     return;
   }
   $('.auto-complete').empty()
-  let $searchCardBar = `<div style="background-color:gray">
+  let $searchCardBar = `<div style="background-color:#EEDAC1">
                         <span> Top 2 items from Google Books</span>
                        </div>
                        `
@@ -234,7 +234,7 @@ function readMovieList(list){
   if (!list.results[0]) {
     return;
   }
-  let $searchCardBar = `<div style="background-color:gray">
+  let $searchCardBar = `<div style="background-color:#EEDAC1">
                         <span> Top 2 items from TMDB</span>
                        </div>
                        `
@@ -296,7 +296,7 @@ function readPlaceList(list) {
   if (!list.businesses[0]) {
     return;
   }
-  let $searchCardBar = `<div style="background-color:gray">
+  let $searchCardBar = `<div style="background-color:#EEDAC1">
                         <span> Top 2 items from Yelp</span>
                         </div>
                        `

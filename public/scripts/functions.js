@@ -82,8 +82,9 @@ function loadFilters() {
 function loadNavBar(response) {
   const {username} = response['0'];
   var $navBar = `<nav id="nav-bar">
-                  <span class="header">SmarToDo Hello ${username}!</span>
+                  <span class="header">SmarToDo</span>
                   <img class="logo" src="images/todolist.png">
+                  <span class="header">Hello, ${username}! </span>
                   <span class="nav-button nav-list">
                     <i class="fa fa-list-ol" aria-hidden="true"></i>
                     My List
@@ -114,7 +115,6 @@ function renderRegister() {
                         <div class="row">
                           <div class="col-md-4 col-md-offset-4 col-xs-12">
                             <div class="register-box">
-                              <h2>Registration</h2>
                               <img src="images/todolist.png""><br><br>
                               <form class="register-form">
                                 <input type="text" name="username" placeholder="Username" /><br><br>
@@ -137,10 +137,10 @@ function renderProfile(response) {
                         <div class="row">
                           <div class="col-md-4 col-md-offset-4 col-xs-12">
                             <div class="profile-box">
-                              <h2>User Profile</h2>
+                              <h2 style="color:white;">User Profile</h2>
                               <img class="logo-page" src="images/todolist.png""><br><br>
-                                <span> Email: ${email} </span><br><br>
-                                <span> Username: ${username} </span><br><br>
+                                <span style="color:white;"> Email: ${email} </span><br><br>
+                                <span style="color:white;"> Username: ${username} </span><br><br><br>
                               <a class="switch-to-update-profile">Change username and password?</a>
                             </div>
                           </div>
@@ -167,7 +167,6 @@ function renderLogin() {
                       <div class="row">
                         <div class="col-md-4 col-md-offset-4 col-xs-12">
                           <div class="login-box">
-                            <h2>Log In</h2>
                             <img src="images/todolist.png"">
                             <form class="login-form"><br>
                               <input type="email" name="email" placeholder="Email" /><br><br>
