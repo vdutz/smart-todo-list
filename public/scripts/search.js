@@ -147,7 +147,7 @@ function readBookList(list) {
                             <div class="display-detail">
                               <h2>${shortenedName}</h2>
                               <h4>Category: book</h4>
-                              <h4>Rating: ${list.items[i].volumeInfo.averageRating}</h4>
+                              <h4>Rating: ${list.items[i].volumeInfo.averageRating}/5 (Google Books)</h4>
                               <h4>Description: ${list.items[i].volumeInfo.description}</h4>
                               <button type="button" class="add-item">Add to List</button>
                             </div>
@@ -168,7 +168,7 @@ function readBookList(list) {
                             <div class="display-detail">
                               <h2>${shortenedName}</h2>
                               <h4>Category: book</h4>
-                              <h4>Rating: ${list.items[i].volumeInfo.averageRating}</h4>
+                              <h4>Rating: ${list.items[i].volumeInfo.averageRating}/5 (Google Books)</h4>
                               <h4>Description: ${list.items[i].volumeInfo.description}</h4>
                               <button type="button" class="add-item">Add to List</button>
                             </div>
@@ -191,7 +191,7 @@ function readBookList(list) {
                               <div class="display-detail">
                                 <h2>${list.items[i].volumeInfo.title}</h2>
                                 <h4>Category: book</h4>
-                                <h4>Rating: ${list.items[i].volumeInfo.averageRating}</h4>
+                                <h4>Rating: ${list.items[i].volumeInfo.averageRating}/5 (Google Books)</h4>
                                 <h4>Description: ${list.items[i].volumeInfo.description}</h4>
                                 <button type="button" class="add-item">Add to List</button>
                               </div>
@@ -212,7 +212,7 @@ function readBookList(list) {
                             <div class="display-detail">
                               <h2>${list.items[i].volumeInfo.title}</h2>
                               <h4>Category: book</h4>
-                              <h4>Rating: ${list.items[i].volumeInfo.averageRating}</h4>
+                              <h4>Rating: ${list.items[i].volumeInfo.averageRating}/5 (Google Books)</h4>
                               <h4>Description: ${list.items[i].volumeInfo.description}</h4>
                               <button type="button" class="add-item">Add to List</button>
                             </div>
@@ -253,7 +253,7 @@ function readMovieList(list){
                             <div class="display-detail">
                               <h2>${list.results[i].title}</h2>
                               <h4>Category: movie</h4>
-                              <h4>Rating: ${list.results[i].vote_average}</h4>
+                              <h4>Rating: ${list.results[i].vote_average}/10 (TMDB)</h4>
                               <h4>Description: ${list.results[i].overview}</h4>
                               <button type="button" class="add-item">Add to List</button>
                             </div>
@@ -275,7 +275,7 @@ function readMovieList(list){
                             <div class="display-detail">
                               <h2>${list.results[i].title}</h2>
                               <h4>Category: movie</h4>
-                              <h4>Rating: ${list.results[i].vote_average}</h4>
+                              <h4>Rating: ${list.results[i].vote_average}/10 (TMDB)</h4>
                               <h4>Description: ${list.results[i].overview}</h4>
                               <button type="button" class="add-item">Add to List</button>
                             </div>
@@ -314,7 +314,7 @@ function readPlaceList(list) {
                             <div class="display-detail">
                               <h2>${list.businesses[i].name}</h2>
                               <h4>Category: restaurant</h4>
-                              <h4>Rating: ${list.businesses[i].rating}</h4>
+                              <h4>Rating: ${list.businesses[i].rating}/5 (Yelp)</h4>
                               <h4>Description: </h4>
                               <button type="button" class="add-item">Add to List</button>
                             </div>
@@ -335,7 +335,7 @@ function readPlaceList(list) {
                             <div class="display-detail">
                               <h2>${list.businesses[i].name}</h2>
                               <h4>Category: restaurant</h4>
-                              <h4>Rating: ${list.businesses[i].rating}</h4>
+                              <h4>Rating: ${list.businesses[i].rating}/5 (Yelp)</h4>
                               <h4>Description: </h4>
                               <button type="button" class="add-item">Add to List</button>
                             </div>
