@@ -138,7 +138,7 @@ function renderProfile(response) {
                           <div class="col-md-4 col-md-offset-4 col-xs-12">
                             <div class="profile-box">
                               <h2>User Profile</h2>
-                              <img src="images/todolist.png""><br><br>
+                              <img class="logo-page" src="images/todolist.png""><br><br>
                                 <span> Email: ${email} </span><br><br>
                                 <span> Username: ${username} </span><br><br>
                               <a class="switch-to-update-profile">Change username and password?</a>
@@ -151,7 +151,7 @@ function renderProfile(response) {
 /////page to edit user profile////
 function renderProfileEdit() {
   var $profileForm = `<h2>Edit User Profile</h2>
-                      <img src="images/todolist.png""><br><br>
+                      <img  class="logo-page" src="images/todolist.png""><br><br>
                       <form class="profile-list-edit">
                         <input type="text" name="username" placeholder="New username" /><br><br>
                         <input type="password" name="password" placeholder="New password" /><br><br>

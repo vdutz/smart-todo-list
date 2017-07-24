@@ -103,13 +103,14 @@ $(document).ready(function() {
 
   // loadList();
 
+  $("body").on('click', '.logo-page', function(event){
+    $("body").empty();
+    checkUser();
+  });
+
   $("body").on('click', '.nav-list',function(event){
     $(".container .row").empty();
     loadList();
-  });
-
-  $("body").on('click', '.nav-login', function(event){
-    renderLogin();
   });
 
   $("body").on('click', '.nav-checkuser', function(event){
