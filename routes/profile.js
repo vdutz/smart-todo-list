@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const bcrypt = require('bcrypt');
 
 
 module.exports = (knex) => {
@@ -22,7 +23,7 @@ module.exports = (knex) => {
     let token = req.session.user_id;
     knex('users')
       .where('session_id', token)
-      .update({username: req.body.username, password: req.body.password})
+      .update({username: req.body.username, password: bcrypt.hashSync(req.body.password, 10)})
       .then((results) => {
         res.json(results);
       })

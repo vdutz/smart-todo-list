@@ -150,7 +150,7 @@ function renderProfile(response) {
 }
 /////page to edit user profile////
 function renderProfileEdit() {
-  var $profileForm = `<h2>Edit User Profile</h2>
+  var $profileForm = `<h2 style="color:white;">Edit User Profile</h2>
                       <img  class="logo-page" src="images/todolist.png""><br><br>
                       <form class="profile-list-edit">
                         <input type="text" name="username" placeholder="New username" /><br><br>
