@@ -138,8 +138,8 @@ function renderProfileEdit() {
   var $profileForm = `<h2>Edit User Profile</h2>
                       <img src="images/todolist.png""><br><br>
                       <form class="profile-list-edit">
-                        <input type="text" name="username" placeholder="Username" /><br><br>
-                        <input type="password" name="password" placeholder="Password" /><br><br>
+                        <input type="text" name="username" placeholder="New username" /><br><br>
+                        <input type="password" name="password" placeholder="New password" /><br><br>
                         <input type="submit" class="submit-update-profile" value="Update" />
                       </form><br>
                      `;
@@ -323,7 +323,6 @@ function userEditProfile(user) {
       // renderItems(itemsObject);
       console.log("Login succesful!")
       checkUser()
-      loadList()
     },
     error: function(err) {
       console.log("Incorrect email or password")
