@@ -56,3 +56,25 @@ This web application helps visitors create a list of to-do items in four categor
 8. Check the seeds file to see what gets seeded in the DB
 9. Run the server: npm run local
 10. Visit http://localhost:8080/
+
+## Test Login Information
+
+You may use the following pre-existing account to login:
+
+- Email: test@test.com
+- Password: test
+
+## Obtaining the API Keys
+
+### The Movie Database API
+
+- Follow the steps on this page: https://developers.themoviedb.org/3/getting-started
+
+### Yelp Fusion API
+
+- Follow the steps on this page: https://www.yelp.ca/developers/documentation/v3/get_started
+
+### Amazon API
+
+- Follow the steps on this page: http://docs.aws.amazon.com/AWSECommerceService/latest/GSG/GettingStarted.html
+
