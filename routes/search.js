@@ -8,7 +8,6 @@ const amazon = require('amazon-product-api')
 const client = amazon.createClient({
   awsId: process.env.AWSID,
   awsSecret: process.env.AWSSECRET
-  // awsTag: process.env.AWSTAG
 })
 
 module.exports = (knex) => {

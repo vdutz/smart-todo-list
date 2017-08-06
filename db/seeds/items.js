@@ -9,19 +9,19 @@ exports.seed = function(knex, Promise) {
       return knex('items').insert([
         {name: "Banh Mi Boys",
         category: "restaurant",
-        rating: "8.0",
+        rating: "4/5 (Yelp)",
         description: "Asian-inspired subs, sandwiches, tacos & steamed buns spiced to order in a snug & lively location",
         picture: "http://www.banhmiboys.com/images/banhmiboys-storefront-yonge.jpg"},
 
         {name: "I, Robot",
         category: "movie",
-        rating: "7.3",
+        rating: "7.3/10 (TMDB)",
         description: "In 2035, a technophobic cop investigates a crime that may have been perpetrated by a robot, which leads to a larger threat to humanity",
         picture: "http://r.fod4.com/c=sq/s=w350,pd1/o=80/http://a.fod4.com/images/user_photos/1213807/1ac86f2d581e62e1d495a0babfafe29c_square_fullsize.jpg"},
 
         {name: "The Three Body Problem",
         category: "book",
-        rating: "9.2",
+        rating: "9.2/10 (Google Books)",
         description: "Set against the backdrop of China's Cultural Revolution, a secret military project sends signals into space to establish contact with aliens",
         picture: "https://s3-us-west-2.amazonaws.com/tabs.web.media/b/h/bhsx/bhsx-square-1536.jpg"},
 
@@ -39,21 +39,27 @@ exports.seed = function(knex, Promise) {
 
         {name: "Sapiens: A Brief History of Humankind",
         category: "book",
-        rating: "9.4",
+        rating: "9.4/10 (Google Books)",
         description: "100,000 years ago, at least six human species inhabited the earth. Today there is just one. Us. Homo sapiens",
         picture: "https://s3-us-west-2.amazonaws.com/tabs.web.media/c/9/c9lw/c9lw-square-orig.jpg"},
 
         {name: "Prometheus",
         category: "movie",
-        rating: "7.2",
+        rating: "7.2/10 (TMDB)",
         description: "Following clues to the origin of mankind, a team finds a structure on a distant moon, but they soon realize they are not alone.",
         picture: "http://manilovefilms.com/wp-content/uploads/2012/06/PROMETHEUS-POSTER.jpg"},
 
         {name: "Me Va Me",
         category: "restaurant",
-        rating: "8.6",
+        rating: "4/5 (Yelp)",
         description: "Our dishes are prepared with only the best ingredients, using our specialty recipes",
-        picture: "https://s3-media3.fl.yelpcdn.com/bphoto/HxfnLq9Hbe-zPJNxIo4tew/348s.jpg"}
+        picture: "https://s3-media3.fl.yelpcdn.com/bphoto/HxfnLq9Hbe-zPJNxIo4tew/348s.jpg"},
+
+        {name: "Harry Potter and the Philosopher's Stone",
+        category: "movie",
+        rating: "7.5/10 (TMDB)",
+        description: "Harry Potter has lived under the stairs at his aunt and uncle's house his whole life. But on his 11th birthday, he learns he's a powerful wizard -- with a place waiting for him at the Hogwarts School of Witchcraft and Wizardry. As he learns to harness his newfound powers with the help of the school's kindly headmaster, Harry uncovers the truth about his parents' deaths -- and about the villain who's to blame.",
+        picture: "http://image.tmdb.org/t/p/w185//dCtFvscYcXQKTNvyyaQr2g2UacJ.jpg"}
       ]);
     }),
 
@@ -66,7 +72,7 @@ exports.seed = function(knex, Promise) {
         password: bcrypt.hashSync('test', 10),
         session_id: "abc123"
         },
-        {username: "Mr. example",
+        {username: "Ms. Example",
         email: "example@example.com",
         password: bcrypt.hashSync('example', 10),
         session_id: ""
@@ -84,11 +90,11 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed user entries
       return knex('users_items').insert([
-        {user_id: 1,
+        {user_id: 2,
         item_id: 3,
         complete_status: "todo"
         },
-        {user_id: 1,
+        {user_id: 2,
         item_id: 4,
         complete_status: "complete"
         },
@@ -96,12 +102,24 @@ exports.seed = function(knex, Promise) {
         item_id: 2,
         complete_status: "todo"
         },
-        {user_id: 2,
+        {user_id: 1,
         item_id: 3,
         complete_status: "todo"
         },
-        {user_id: 2,
+        {user_id: 1,
+        item_id: 2,
+        complete_status: "complete"
+        },
+        {user_id: 1,
         item_id: 5,
+        complete_status: "todo"
+        },
+        {user_id: 1,
+        item_id: 9,
+        complete_status: "complete"
+        },
+        {user_id: 1,
+        item_id: 1,
         complete_status: "todo"
         },
         {user_id: 3,
