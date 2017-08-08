@@ -69,7 +69,7 @@ module.exports = (knex) => {
                 .andWhere('category', req.body.category)
           })
           .andWhere('user_id', function() {
-            this.select(id)
+            this.select('id')
                 .from('users')
                 .where('session_id', req.session.user_id)
           })
@@ -85,16 +85,16 @@ module.exports = (knex) => {
               })
             } else {
               console.log('Record already exists')
-              res.status(400).send();
+              res.status(401).send();
             }
           })
           .catch((err) => {
-            res.status(400).send()
+            res.status(402).send()
           })
         }
     })
     .catch((err) => {
-      res.status(400).send()
+      res.status(403).send()
     })
   })
 
