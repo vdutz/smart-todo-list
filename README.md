@@ -1,7 +1,48 @@
 # Smart To Do List
 
 This web application helps visitors create a list of to-do items in four categories (books to read, movies to watch, restaurants to visit, and products to buy).  The visitor can use a smart search bar that provides autocomplete suggestions by connecting to the following four APIs: Google Books, Yelp, Amazon, and The Movie Database. The APIs will also be used to obtain summary information about each item.
+***
+## Getting Started
 
+1. Create the .env by using .env.example as a reference: cp .env.example .env
+2. Update the .env file with your correct local information
+3. Install dependencies: npm i
+4. Fix to binaries for sass: npm rebuild node-sass
+5. Run migrations: npm run knex migrate:latest
+6. Check the migrations folder to see what gets created in the DB
+7. Run the seed: npm run knex seed:run
+8. Check the seeds file to see what gets seeded in the DB
+9. Run the server: npm run local
+10. Visit http://localhost:8080/
+
+**This app is also live on Heroku. Try it [here](https://smart-to-do-list.herokuapp.com/) or [here](https://smart-todo-list.herokuapp.com/)**
+
+***
+## Test Login Information
+
+You may use the following pre-existing account to login:
+
+- Email: test@test.com
+- Password: test
+
+***
+## Obtaining the API Keys 
+
+If you wish to run this app locally, you will need to obtain serveral API keys. Please update the .env file with these API keys using .env.example. as a reference.
+
+### The Movie Database API
+
+- Follow the steps on this page: https://developers.themoviedb.org/3/getting-started
+
+### Yelp Fusion API
+
+- Follow the steps on this page: https://www.yelp.ca/developers/documentation/v3/get_started
+
+### Amazon API
+
+- Follow the steps on this page: http://docs.aws.amazon.com/AWSECommerceService/latest/GSG/GettingStarted.html
+
+***
 ## Final Product
 
 ### Registration Page
@@ -28,7 +69,7 @@ This web application helps visitors create a list of to-do items in four categor
 ### Edit Profile Page
 !["Edit Profile Page"](https://github.com/vdutz/smart-todo-list/blob/master/docs/edit-profile-page.png?raw=true)
 
-
+***
 ## Dependencies
 
 - amazon-product-api 0.4.3 or above
@@ -43,38 +84,3 @@ This web application helps visitors create a list of to-do items in four categor
 - node-sass-middleware 0.9.8 or above
 - pg 7.0.1 or above
 - request-promise 4.2.1 or above
-
-## Getting Started
-
-1. Create the .env by using .env.example as a reference: cp .env.example .env
-2. Update the .env file with your correct local information
-3. Install dependencies: npm i
-4. Fix to binaries for sass: npm rebuild node-sass
-5. Run migrations: npm run knex migrate:latest
-6. Check the migrations folder to see what gets created in the DB
-7. Run the seed: npm run knex seed:run
-8. Check the seeds file to see what gets seeded in the DB
-9. Run the server: npm run local
-10. Visit http://localhost:8080/
-
-## Test Login Information
-
-You may use the following pre-existing account to login:
-
-- Email: test@test.com
-- Password: test
-
-## Obtaining the API Keys
-
-### The Movie Database API
-
-- Follow the steps on this page: https://developers.themoviedb.org/3/getting-started
-
-### Yelp Fusion API
-
-- Follow the steps on this page: https://www.yelp.ca/developers/documentation/v3/get_started
-
-### Amazon API
-
-- Follow the steps on this page: http://docs.aws.amazon.com/AWSECommerceService/latest/GSG/GettingStarted.html
-
