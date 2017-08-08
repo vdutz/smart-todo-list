@@ -1,7 +1,7 @@
 # Smart To Do List
 
 This web application helps visitors create a list of to-do items in four categories (books to read, movies to watch, restaurants to visit, and products to buy).  The visitor can use a smart search bar that provides autocomplete suggestions by connecting to the following four APIs: Google Books, Yelp, Amazon, and The Movie Database. The APIs will also be used to obtain summary information about each item.
-***
+
 ## Getting Started
 
 1. Create the .env by using .env.example as a reference: cp .env.example .env
@@ -17,7 +17,6 @@ This web application helps visitors create a list of to-do items in four categor
 
 **This app is also live on Heroku. Try it [here](https://smart-to-do-list.herokuapp.com/) or [here](https://smart-todo-list.herokuapp.com/)**
 
-***
 ## Test Login Information
 
 You may use the following pre-existing account to login:
@@ -25,7 +24,6 @@ You may use the following pre-existing account to login:
 - Email: test@test.com
 - Password: test
 
-***
 ## Obtaining the API Keys 
 
 If you wish to run this app locally, you will need to obtain serveral API keys. Please update the .env file with these API keys using .env.example. as a reference.
@@ -42,7 +40,6 @@ If you wish to run this app locally, you will need to obtain serveral API keys. 
 
 - Follow the steps on this page: http://docs.aws.amazon.com/AWSECommerceService/latest/GSG/GettingStarted.html
 
-***
 ## Final Product
 
 ### Registration Page
@@ -69,7 +66,6 @@ If you wish to run this app locally, you will need to obtain serveral API keys. 
 ### Edit Profile Page
 !["Edit Profile Page"](https://github.com/vdutz/smart-todo-list/blob/master/docs/edit-profile-page.png?raw=true)
 
-***
 ## Dependencies
 
 - amazon-product-api 0.4.3 or above
